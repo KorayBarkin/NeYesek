@@ -1,5 +1,6 @@
-# Ne Yesek Mobile Application - Flutter
+# Flutter Food Delivery App UI Kit
 
+## [Watch it on YouTube](https://youtu.be/xLFO6XBiZVw)
 
 **Packages we are using:**
 
@@ -13,4 +14,10 @@
 
 - SF Pro Text
 
+We build Flutter food delivery app UI Kit to help you build a nice clean food delivery app by using flutter which runs both Android and iOS. This kit comes packed with 25 beautifully designed screens and a hearty portion of deliciously responsive components. Also, we have skeleton loading and have separate components for both Android and iOS so that you feel the native experience.
 
+### Flutter Food Delivery App UI Kit Preview
+
+<!-- ![Preview](/gif.gif) -->
+
+![App UI](/ui.png)
