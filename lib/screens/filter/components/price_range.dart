@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:food_ui_kit/screens/home/home_screen.dart';
 import 'package:food_ui_kit/screens/search/search_screen.dart';
-
+import 'package:food_ui_kit/screens/search/components/body.dart';
 import '../../../constants.dart';
 import '../../../size_config.dart';
 import '../../../components/section_title.dart';
+import '../../../dummy.dart';
 
 class PriceRange extends StatefulWidget {
   @override
@@ -14,6 +15,27 @@ class PriceRange extends StatefulWidget {
 class _PriceRangeState extends State<PriceRange> {
   RangeValues _currentRangeValues = const RangeValues(20, 40);
   RangeValues _currentRatingValues = const RangeValues(7.5, 9.0);
+
+  BodyState bs = new BodyState();
+
+  void filteredSearchButton() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => SearchScreen(),
+      ),
+    );
+
+    filter_rating = true;
+    filter_price = true;
+
+    start_rating = _currentRatingValues.start;
+    end_rating = _currentRatingValues.end;
+
+    start_price = _currentRangeValues.start;
+    end_price = _currentRangeValues.end;
+  }
+
   void changeValue(RangeValues values) {
     setState(() {
       _currentRangeValues = values;
@@ -115,12 +137,7 @@ class _PriceRangeState extends State<PriceRange> {
               "ARA",
               style: TextStyle(color: Colors.white),
             ),
-            onPressed: () => Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => SearchScreen(),
-              ),
-            ),
+            onPressed: filteredSearchButton,
           ),
         )
       ],

@@ -15,6 +15,7 @@ class RestaurantInfoBigCard extends StatelessWidget {
   final int numOfRating, deliveryTime;
   final bool isFreeDelivery;
   final VoidCallback press;
+  final double price;
 
   const RestaurantInfoBigCard({
     Key key,
@@ -26,6 +27,7 @@ class RestaurantInfoBigCard extends StatelessWidget {
     @required this.images,
     @required this.foodType,
     @required this.press,
+    @required this.price,
   }) : super(key: key);
 
   @override

@@ -5,15 +5,17 @@ import 'package:food_ui_kit/components/scalton/big_card_scalton.dart';
 import 'package:food_ui_kit/constants.dart';
 import 'package:food_ui_kit/size_config.dart';
 import '../../../demoData.dart';
+import '../../../dummy.dart';
 
 class Body extends StatefulWidget {
   @override
-  _BodyState createState() => _BodyState();
+  BodyState createState() => BodyState();
 }
 
-class _BodyState extends State<Body> {
+class BodyState extends State<Body> {
   List<RestaurantInfoBigCard> myList;
   List<RestaurantInfoBigCard> searchList;
+
   final _formKey = GlobalKey<FormState>();
   bool _autoValidate = false;
   bool _showSearchResult = false;
@@ -29,6 +31,7 @@ class _BodyState extends State<Body> {
         rating: 7.2,
         numOfRating: 231,
         deliveryTime: 20,
+        price: 36.0,
         images: null,
         foodType: ["Fastfood", "Türk"],
         press: null));
@@ -37,6 +40,7 @@ class _BodyState extends State<Body> {
         rating: 4.5,
         numOfRating: 231,
         deliveryTime: 20,
+        price: 22.0,
         images: null,
         foodType: ["Fastfood", "İtalyan"],
         press: null));
@@ -45,6 +49,7 @@ class _BodyState extends State<Body> {
         rating: 5.1,
         numOfRating: 231,
         deliveryTime: 20,
+        price: 27.5,
         images: null,
         foodType: ["Fastfood", "Amerikan"],
         press: null));
@@ -53,6 +58,7 @@ class _BodyState extends State<Body> {
         rating: 9.4,
         numOfRating: 231,
         deliveryTime: 20,
+        price: 42.0,
         images: null,
         foodType: ["Fastfood", "Türk"],
         press: null));
@@ -62,6 +68,7 @@ class _BodyState extends State<Body> {
         numOfRating: 231,
         deliveryTime: 20,
         images: null,
+        price: 42.0,
         foodType: ["Fastfood", "Türk"],
         press: null));
     myList.add(new RestaurantInfoBigCard(
@@ -70,6 +77,7 @@ class _BodyState extends State<Body> {
         numOfRating: 231,
         deliveryTime: 20,
         images: null,
+        price: 27.5,
         foodType: ["Fastfood", "Amerikan"],
         press: null));
     myList.add(new RestaurantInfoBigCard(
@@ -78,6 +86,7 @@ class _BodyState extends State<Body> {
         numOfRating: 231,
         deliveryTime: 20,
         images: null,
+        price: 22.0,
         foodType: ["Fastfood", "İtalyan"],
         press: null));
     myList.add(new RestaurantInfoBigCard(
@@ -87,12 +96,26 @@ class _BodyState extends State<Body> {
         deliveryTime: 20,
         images: null,
         foodType: ["Fastfood", "Türk"],
+        price: 36.0,
         press: null));
+    print("myList initialized");
     Future.delayed(Duration(seconds: 1), () {
       setState(() {
         _isLoading = false;
       });
     });
+
+    if (filter_rating) {
+      filter_rating = false;
+      searchList = new List<RestaurantInfoBigCard>();
+
+      if (filter_price) {
+        filter_price = false;
+        filterPrice(start_price, end_price);
+      }
+
+      filterRating(start_rating, end_rating);
+    }
   }
 
   void showResult() {
@@ -114,6 +137,7 @@ class _BodyState extends State<Body> {
       name: "McDonald's",
       rating: 8.6,
       numOfRating: 200,
+      price: 48.0,
       deliveryTime: 25,
       foodType: [
         "Fast-Food",
@@ -151,6 +175,7 @@ class _BodyState extends State<Body> {
                     rating: searchList[index].rating,
                     numOfRating: 200,
                     deliveryTime: 25,
+                    price: searchList[index].price,
                     foodType: [
                       "Fast-Food",
                       "Amerikan Mutfağı",
@@ -164,6 +189,38 @@ class _BodyState extends State<Body> {
         ),
       ),
     );
+  }
+
+  void filterRating(double start, double end) {
+    if (myList
+            .where((element) {
+              return element.rating >= start && element.rating <= end;
+            })
+            .toList()
+            .length >
+        0) {
+      print("length > 0");
+      searchList += myList.where((element) {
+        return element.rating >= start && element.rating <= end;
+      }).toList();
+      showResult();
+    }
+  }
+
+  void filterPrice(double start, double end) {
+    if (searchList
+            .where((element) {
+              return element.price >= start && element.price <= end;
+            })
+            .toList()
+            .length >
+        0) {
+      print("length > 0");
+      searchList += searchList.where((element) {
+        return element.price >= start && element.price <= end;
+      }).toList();
+      showResult();
+    }
   }
 
   Form buildSearchForm() {

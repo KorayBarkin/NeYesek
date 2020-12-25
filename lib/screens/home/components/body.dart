@@ -14,6 +14,14 @@ import 'medium_card_list.dart';
 class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    List<String> data = [
+      "assets/images/big_1.png",
+      "assets/images/big_2.png",
+      "assets/images/big_3.png",
+      "assets/images/big_4.png",
+      "assets/images/cheeseburger.jpg",
+      "assets/images/pizza.jpg"
+    ];
     return SafeArea(
       child: SingleChildScrollView(
         child: Column(
@@ -65,10 +73,11 @@ class Body extends StatelessWidget {
                 child: RestaurantInfoBigCard(
                   // Images are List<String>
                   images: demoBigImages..shuffle(),
-                  name: "McDonald's",
+                  name: "Ne Yesek Pizza",
                   rating: 8.6,
                   numOfRating: 200,
                   deliveryTime: 25,
+                  price: 22.0,
                   foodType: [
                     "Fastfood",
                     "Amerikan",

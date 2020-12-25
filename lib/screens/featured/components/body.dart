@@ -43,6 +43,7 @@ class _BodyState extends State<Body> {
                     name: "Ne Yesek Pizza",
                     rating: 9.6,
                     numOfRating: 200,
+                    price: 20.0,
                     deliveryTime: 25,
                     foodType: ["Bilkent'in en iyisi!"],
                     press: () {},
