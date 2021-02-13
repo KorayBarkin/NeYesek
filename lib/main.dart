@@ -1,10 +1,13 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:food_ui_kit/components/bottom_nav_bar.dart';
 import 'package:food_ui_kit/screens/home/home_screen.dart';
 import 'package:food_ui_kit/screens/onboarding/onboarding_scrreen.dart';
 import 'package:food_ui_kit/theme.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 

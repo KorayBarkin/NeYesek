@@ -70,12 +70,6 @@ List<Map<String, dynamic>> demoData = [
     "text": "Hep aynı yemekleri yemekten sıkılmadın mı?",
   },
   {
-    "illustration": "assets/Illustrations/Illustrations_2.svg",
-    "title": "İstersen evine getirelim!",
-    "text":
-        "Pandemi süresince evlere ücretsiz paket servislerimiz bulunmaktadır.",
-  },
-  {
     "illustration": "assets/Illustrations/Illustrations_3.svg",
     "title": "En iyi yemekleri keşfet!",
     "text": "Canın ne yemek istiyorsa en iyi yerden ye!",

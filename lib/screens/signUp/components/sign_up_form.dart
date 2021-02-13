@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_ui_kit/screens/phoneLogin/phone_login_screen.dart';
+import 'package:food_ui_kit/screens/signIn/sign_in_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import '../../../constants.dart';
 import '../../../size_config.dart';
@@ -22,6 +24,7 @@ class _SignUpFormState extends State<SignUpForm> {
   FocusNode _conformPasswordNode;
 
   String _fullName, _email, _password, _conformPassword;
+  final auth = FirebaseAuth.instance;
 
   @override
   void initState() {
@@ -148,12 +151,19 @@ class _SignUpFormState extends State<SignUpForm> {
               if (_formKey.currentState.validate()) {
                 // If all data are correct then save data to out variables
                 _formKey.currentState.save();
-                Navigator.push(
+                auth
+                    .createUserWithEmailAndPassword(
+                        email: _email, password: _password)
+                    .then((_) {
+                  Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(builder: (context) => SignInScreen()));
+                });
+                /*Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) => PghoneLoginScreen(),
                   ),
-                );
+                );*/
               } else {
                 // If all data are not valid then start auto validation.
                 setState(() {

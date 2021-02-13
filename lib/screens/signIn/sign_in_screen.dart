@@ -7,7 +7,7 @@ class SignInScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Giriş Yap"),
+        title: Text("Giriş Yapınız"),
       ),
       body: Body(),
     );

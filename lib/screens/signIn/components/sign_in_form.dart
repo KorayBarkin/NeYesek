@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_ui_kit/components/bottom_nav_bar.dart';
 import 'package:food_ui_kit/screens/findRestaurants/find_restaurants_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import '../../../constants.dart';
 import '../../../size_config.dart';
@@ -40,6 +41,8 @@ class _SignInFormState extends State<SignInForm> {
   @override
   Widget build(BuildContext context) {
     String _email, _password;
+    final auth = FirebaseAuth.instance;
+
     return Form(
       key: _formKey,
       child: Column(
@@ -115,13 +118,13 @@ class _SignInFormState extends State<SignInForm> {
               if (_formKey.currentState.validate()) {
                 // If all data are correct then save data to out variables
                 _formKey.currentState.save();
-
-                // just for demo
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => BottomNavBar(),
-                    ));
+                auth
+                    .signInWithEmailAndPassword(
+                        email: _email, password: _password)
+                    .then((_) {
+                  Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(builder: (context) => BottomNavBar()));
+                });
               } else {
                 // If all data are not valid then start auto validation.
                 setState(() {
