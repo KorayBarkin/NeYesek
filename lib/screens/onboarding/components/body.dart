@@ -52,7 +52,7 @@ class _BodyState extends State<Body> {
                   builder: (context) => SignInScreen(),
                 ),
               ),
-              text: "Hadi başlayalım 123",
+              text: "Hadi başlayalım",
             ),
           ),
           Spacer(),
