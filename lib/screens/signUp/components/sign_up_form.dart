@@ -147,11 +147,11 @@ class _SignUpFormState extends State<SignUpForm> {
           // Sign Up Button
           PrimaryButton(
             text: "Kayıt ol",
-            press: () {
+            press: () async {
               if (_formKey.currentState.validate()) {
                 // If all data are correct then save data to out variables
                 _formKey.currentState.save();
-                auth
+                /*auth
                     .createUserWithEmailAndPassword(
                         email: _email, password: _password)
                     .then((_) {
@@ -163,7 +163,16 @@ class _SignUpFormState extends State<SignUpForm> {
                   MaterialPageRoute(
                     builder: (context) => PghoneLoginScreen(),
                   ),
-                );*/
+                );*/*/
+                try {
+                  await FirebaseAuth.instance.createUserWithEmailAndPassword(
+                      email: _email, password: _password);
+                  print("Signed up, you may want to navigate now");
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => SignInScreen()));
+                } catch (e) {
+                  print("E-mail is already taken");
+                }
               } else {
                 // If all data are not valid then start auto validation.
                 setState(() {

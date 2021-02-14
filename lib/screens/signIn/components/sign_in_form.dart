@@ -61,7 +61,7 @@ class _SignInFormState extends State<SignInForm> {
             cursorColor: kActiveColor,
             keyboardType: TextInputType.emailAddress,
             decoration: InputDecoration(
-              hintText: "Email adresi",
+              hintText: "E-mail adresi",
               contentPadding: kTextFieldPadding,
             ),
           ),
@@ -114,17 +114,19 @@ class _SignInFormState extends State<SignInForm> {
           // Sign In Button
           PrimaryButton(
             text: "Giriş Yap",
-            press: () {
+            press: () async {
               if (_formKey.currentState.validate()) {
                 // If all data are correct then save data to out variables
                 _formKey.currentState.save();
-                auth
-                    .signInWithEmailAndPassword(
-                        email: _email, password: _password)
-                    .then((_) {
-                  Navigator.of(context).pushReplacement(
+                try {
+                  await FirebaseAuth.instance.signInWithEmailAndPassword(
+                      email: _email, password: _password);
+                  print("Signed in, you may want to navigate now");
+                  Navigator.push(context,
                       MaterialPageRoute(builder: (context) => BottomNavBar()));
-                });
+                } catch (e) {
+                  print("User not found");
+                }
               } else {
                 // If all data are not valid then start auto validation.
                 setState(() {
