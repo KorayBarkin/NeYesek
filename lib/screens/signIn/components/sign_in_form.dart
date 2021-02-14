@@ -119,13 +119,14 @@ class _SignInFormState extends State<SignInForm> {
                 // If all data are correct then save data to out variables
                 _formKey.currentState.save();
                 try {
-                  await FirebaseAuth.instance.signInWithEmailAndPassword(
+                  await auth.signInWithEmailAndPassword(
                       email: _email, password: _password);
                   print("Signed in, you may want to navigate now");
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => BottomNavBar()));
                 } catch (e) {
                   print("User not found");
+                  _showDialog();
                 }
               } else {
                 // If all data are not valid then start auto validation.
@@ -137,6 +138,35 @@ class _SignInFormState extends State<SignInForm> {
           )
         ],
       ),
+    );
+  }
+
+  _showDialog() {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+          title: Text("Girdiğiniz e-posta adresi veya şifre yanlış."),
+          content: Text("Lütfen tekrar deneyiniz."),
+          actions: <Widget>[
+            Padding(
+              padding: const EdgeInsets.only(right: 10.0),
+              child: MaterialButton(
+                shape: StadiumBorder(),
+                minWidth: 100,
+                color: kActiveColor,
+                child: new Text("Kapat"),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ),
+          ],
+        );
+      },
     );
   }
 }

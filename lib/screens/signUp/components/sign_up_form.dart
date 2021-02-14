@@ -165,13 +165,14 @@ class _SignUpFormState extends State<SignUpForm> {
                   ),
                 );*/*/
                 try {
-                  await FirebaseAuth.instance.createUserWithEmailAndPassword(
+                  await auth.createUserWithEmailAndPassword(
                       email: _email, password: _password);
                   print("Signed up, you may want to navigate now");
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => SignInScreen()));
                 } catch (e) {
                   print("E-mail is already taken");
+                  _showDialog();
                 }
               } else {
                 // If all data are not valid then start auto validation.
@@ -183,6 +184,35 @@ class _SignUpFormState extends State<SignUpForm> {
           ),
         ],
       ),
+    );
+  }
+
+  _showDialog() {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+          title: Text("E-Posta çoktan alınmış."),
+          content: Text("Lütfen tekrar deneyiniz."),
+          actions: <Widget>[
+            Padding(
+              padding: const EdgeInsets.only(right: 10.0),
+              child: MaterialButton(
+                shape: StadiumBorder(),
+                minWidth: 100,
+                color: kActiveColor,
+                child: new Text("Kapat"),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ),
+          ],
+        );
+      },
     );
   }
 }
