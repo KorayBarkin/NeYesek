@@ -93,6 +93,11 @@
                 android:name="com.google.firebase.components:com.google.firebase.dynamicloading.DynamicLoadingRegistrar"
                 android:value="com.google.firebase.components.ComponentRegistrar" />
         </service>
+        <service
+            android:name="com.lyokone.location.FlutterLocationService"
+            android:enabled="true"
+            android:exported="false"
+            android:foregroundServiceType="location" />
 
         <activity
             android:name="io.flutter.plugins.urllauncher.WebViewActivity"
