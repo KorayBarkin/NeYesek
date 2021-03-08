@@ -1,27 +1,22 @@
 import 'package:flutter/material.dart';
 
 import '../../location/locationChange.dart';
+import '../components/maps.dart';
+import '../../../constants.dart';
 
 class Body extends StatelessWidget {
-  var _mapBox = null;
-
   @override
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
         Container(
-          height: 170,
+          height: 500,
           width: double.infinity,
           alignment: Alignment.center,
           decoration: BoxDecoration(
             border: Border.all(width: 1, color: Colors.grey),
           ),
-          child: _mapBox == null
-              ? Text(
-                  "location map here",
-                  textAlign: TextAlign.center,
-                )
-              : _mapBox,
+          child: Maps(),
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -31,7 +26,7 @@ class Body extends StatelessWidget {
                 Icons.location_on,
               ),
               label: Text("Current Location"),
-              textColor: Theme.of(context).primaryColor,
+              textColor: kActiveColor,
               onPressed: () {},
             ),
             FlatButton.icon(
@@ -39,7 +34,7 @@ class Body extends StatelessWidget {
                 Icons.map,
               ),
               label: Text("Select form map"),
-              textColor: Theme.of(context).primaryColor,
+              textColor: kActiveColor,
               onPressed: () {},
             ),
           ],
