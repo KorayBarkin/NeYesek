@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
       theme: buildThemeData(),
 
       /// On first screen must call [SizeConfig().init(context)]
-      home: HomeScreen(),
+      home: GoogleMapsScreen(),
       // home: HomeScreen(),
       // home: BottomNavBar(),
     );
