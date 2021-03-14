@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+
 import '../../../runningData.dart';
 
 class Maps extends StatefulWidget {
@@ -19,6 +20,9 @@ class _MapsState extends State<Maps> {
   Widget build(BuildContext context) {
     return GoogleMap(
         mapType: MapType.normal,
+        myLocationEnabled: true,
+        myLocationButtonEnabled: true,
+        zoomGesturesEnabled: true,
         initialCameraPosition: _ctisBuilding,
         onMapCreated: (map) {});
   }

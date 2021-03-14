@@ -1,4 +1,0 @@
-#Sun Mar 14 12:15:48 EET 2021
-base.0=/Users/koraybarkin/Downloads/NeYesek-NeYesekv1.3/build/app/intermediates/dex/debug/mergeDexDebug/out/classes.dex
-path.0=classes.dex
-renamed.0=classes.dex
