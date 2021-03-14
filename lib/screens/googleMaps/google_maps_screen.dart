@@ -1,8 +1,10 @@
 import "package:flutter/material.dart";
 import 'package:food_ui_kit/screens/details/details_screen.dart';
+import 'package:google_map_polyline/google_map_polyline.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import '../../components/buttons/primary_button.dart';
 import '../../constants.dart';
+import 'package:permission/permission.dart';
 
 class GoogleMapsScreen extends StatefulWidget {
   @override
@@ -10,12 +12,54 @@ class GoogleMapsScreen extends StatefulWidget {
 }
 
 class _GoogleMapsScreenState extends State<GoogleMapsScreen> {
+  GoogleMapController _controller;
+  final Set<Polyline> polylines = {};
+  List<LatLng> routeCoordinates;
+  GoogleMapPolyline googleMapPolyline =
+      new GoogleMapPolyline(apiKey: "AIzaSyAL8bPKcw2oua6nTG7aZMiQEedmePscNl0");
+
+  getSomePoints() async {
+    var permissions =
+        await Permission.getPermissionsStatus([PermissionName.Location]);
+    if (permissions[0].permissionStatus == PermissionStatus.notAgain) {
+      print("permission yok");
+      var askpermissions =
+          await Permission.requestPermissions([PermissionName.Location]);
+    } else {
+      print("permission var");
+      routeCoordinates = await googleMapPolyline.getCoordinatesWithLocation(
+          origin: LatLng(39.8748896, 32.7615573),
+          destination: LatLng(39.8713623, 32.7641787),
+          mode: RouteMode.driving);
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getSomePoints();
+  }
+
   static final CameraPosition _ctisBuilding = CameraPosition(
     bearing: 180,
     target: LatLng(39.8713623, 32.7641787),
     //tilt: 59.440717697143555,
     zoom: 19.151926040649414,
   );
+
+  void onMapCreated(GoogleMapController controller) {
+    setState(() {
+      _controller = controller;
+      polylines.add(Polyline(
+          polylineId: PolylineId('route1'),
+          visible: true,
+          points: routeCoordinates,
+          width: 4,
+          color: Colors.blue,
+          startCap: Cap.roundCap,
+          endCap: Cap.buttCap));
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +84,8 @@ class _GoogleMapsScreenState extends State<GoogleMapsScreen> {
             child: GoogleMap(
               mapType: MapType.normal,
               initialCameraPosition: _ctisBuilding,
-              onMapCreated: (map) {},
+              onMapCreated: onMapCreated,
+              polylines: polylines,
               markers: _createMarker(),
             ),
           ),
