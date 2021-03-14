@@ -20,27 +20,23 @@ class _GoogleMapsScreenState extends State<GoogleMapsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(context),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Container(
-            margin: EdgeInsets.only(top: 5),
-            child: Text(
-              "Ne Yesek",
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-              ),
+          Center(
+            child: Container(
+              height: 150,
+              width: 300,
+              child: Image.asset("assets/images/NeYesek_banner.png"),
             ),
           ),
           Container(
-            margin: EdgeInsets.only(top: 20, left: 5, right: 5),
+            margin: EdgeInsets.only(left: 5, right: 5),
             decoration: BoxDecoration(
                 border: Border(
+                    top: BorderSide(color: Colors.black, width: 5.0),
                     bottom: BorderSide(color: Colors.black, width: 5.0))),
-            height: 500,
+            height: 400,
             child: GoogleMap(
               mapType: MapType.normal,
               initialCameraPosition: _ctisBuilding,
@@ -49,25 +45,60 @@ class _GoogleMapsScreenState extends State<GoogleMapsScreen> {
             ),
           ),
           Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
-              FlatButton.icon(
-                icon: Icon(
-                  Icons.arrow_back,
-                ),
-                label: Text("Geri Dön"),
-                textColor: kActiveColor,
-                onPressed: () {
+              GestureDetector(
+                onTapDown: (c) {
                   Navigator.of(context).pop();
                 },
-              ),
-              FlatButton.icon(
-                icon: Icon(
-                  Icons.map,
+                child: Container(
+                  margin: EdgeInsets.only(top: 40),
+                  height: 50,
+                  width: 150,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(100.0),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Color(0x80000000),
+                          blurRadius: 10.0,
+                          offset: Offset(0.0, 5.0),
+                        ),
+                      ],
+                      color: Colors.orange[300]),
+                  child: Center(
+                    child: Text(
+                      'GERİ DÖN',
+                      style: TextStyle(
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white),
+                    ),
+                  ),
                 ),
-                label: Text("Beni Götür"),
-                textColor: kActiveColor,
-                onPressed: () {},
+              ),
+              Container(
+                margin: EdgeInsets.only(top: 40),
+                height: 50,
+                width: 150,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(100.0),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Color(0x80000000),
+                        blurRadius: 10.0,
+                        offset: Offset(0.0, 5.0),
+                      ),
+                    ],
+                    color: Colors.orange[300]),
+                child: Center(
+                  child: Text(
+                    'BENİ GÖTÜR',
+                    style: TextStyle(
+                        fontSize: 20.0,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                ),
               ),
               // MaterialButton(
               //   shape: StadiumBorder(),
