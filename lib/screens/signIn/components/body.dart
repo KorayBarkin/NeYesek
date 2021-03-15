@@ -1,13 +1,14 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
+import './google_sign_in.dart';
 import '../../../components/buttons/socal_button.dart';
 import '../../../constants.dart';
 import '../../../size_config.dart';
 import '../../../components/welcome_text.dart';
 import '../../../screens/signUp/sign_up_screen.dart';
 import 'sign_in_form.dart';
+import 'package:provider/provider.dart';
 
 class Body extends StatelessWidget {
   @override
@@ -71,7 +72,11 @@ class Body extends StatelessWidget {
 
             // Google
             SocalButton(
-              press: () {},
+              press: () {
+                final provider =
+                    Provider.of<GoogleSignInProvider>(context, listen: false);
+                provider.login();
+              },
               text: "Google ile giriş yapın",
               color: Color(0xFF4285F4),
               icon: SvgPicture.asset(
