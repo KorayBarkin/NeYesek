@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:food_ui_kit/screens/phoneLogin/phone_login_screen.dart';
 import 'package:food_ui_kit/screens/signIn/sign_in_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:food_ui_kit/screens/signUp/components/verify.dart';
 
 import '../../../constants.dart';
 import '../../../size_config.dart';
@@ -167,9 +168,10 @@ class _SignUpFormState extends State<SignUpForm> {
                 try {
                   await auth.createUserWithEmailAndPassword(
                       email: _email, password: _password);
-                  print("Signed up, you may want to navigate now");
+                  print(
+                      "Signed up is done and now you can verify the email address.");
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => SignInScreen()));
+                      MaterialPageRoute(builder: (context) => VerifyScreen()));
                 } catch (e) {
                   print("E-mail is already taken");
                   _showDialog();
