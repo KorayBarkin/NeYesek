@@ -3,8 +3,9 @@ import 'package:food_ui_kit/screens/details/details_screen.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import '../../components/buttons/primary_button.dart';
 import '../../constants.dart';
-import 'package:permission/permission.dart';
 import 'package:maps_launcher/maps_launcher.dart';
+import '../../runningData.dart';
+import 'package:permission/permission.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 
 class GoogleMapsScreen extends StatefulWidget {
@@ -15,7 +16,7 @@ class GoogleMapsScreen extends StatefulWidget {
 class _GoogleMapsScreenState extends State<GoogleMapsScreen> {
   GoogleMapController _controller;
 
-  var start = LatLng(39.8713623, 32.7641787);
+  //hardcoded
   var destination = LatLng(39.90599, 32.7619113);
 
   PolylinePoints polylinePoints;
@@ -27,9 +28,8 @@ class _GoogleMapsScreenState extends State<GoogleMapsScreen> {
     super.initState();
   }
 
-  static final CameraPosition _ctisBuilding = CameraPosition(
-    bearing: 180,
-    target: LatLng(39.8713623, 32.7641787),
+  static final CameraPosition _cameraPosition = CameraPosition(
+    target: LatLng(StartingLocation.latitude, StartingLocation.longitude),
     //tilt: 59.440717697143555,
     zoom: 14.151926040649414,
   );
@@ -92,8 +92,8 @@ class _GoogleMapsScreenState extends State<GoogleMapsScreen> {
             height: MediaQuery.of(context).size.height - 250,
             child: GoogleMap(
               mapType: MapType.normal,
-              initialCameraPosition: _ctisBuilding,
-              //onMapCreated: onMapCreated,
+              initialCameraPosition: _cameraPosition,
+              //onMapCreated: onMapCreated(),
               myLocationEnabled: true,
               myLocationButtonEnabled: true,
               zoomGesturesEnabled: true,
@@ -136,7 +136,10 @@ class _GoogleMapsScreenState extends State<GoogleMapsScreen> {
               GestureDetector(
                 onTapDown: (c) {
                   //MapsLauncher.launchCoordinates(_ctisBuilding.target.latitude, _ctisBuilding.target.longitude);
-                  _createPolylines(start, destination);
+                  _createPolylines(
+                      LatLng(StartingLocation.latitude,
+                          StartingLocation.longitude),
+                      destination);
                 },
                 child: Container(
                   margin: EdgeInsets.only(top: 20),
@@ -206,8 +209,8 @@ class _GoogleMapsScreenState extends State<GoogleMapsScreen> {
   Set<Marker> _createMarker() {
     return <Marker>[
       Marker(
-          markerId: MarkerId("Bilkent CTIS"),
-          position: _ctisBuilding.target,
+          markerId: MarkerId("User Location"),
+          position: _cameraPosition.target,
           icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRed))
     ].toSet();
   }

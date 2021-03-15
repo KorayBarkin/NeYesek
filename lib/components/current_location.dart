@@ -52,6 +52,7 @@ class _CurrentLocationState extends State<CurrentLocation> {
 
     ChoosenLocation =
         LatLng(_CurrentPosition.latitude, _CurrentPosition.longitude);
+    StartingLocation = ChoosenLocation;
 
     // print(_CurrentPosition.latitude);
     // print(_CurrentPosition.longitude);
