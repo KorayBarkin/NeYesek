@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:food_ui_kit/constants.dart';
 import 'package:food_ui_kit/size_config.dart';
+import '../../manageProfile/manage_screen.dart';
 
 class Body extends StatelessWidget {
   @override
@@ -26,13 +27,12 @@ class Body extends StatelessWidget {
                 svgSrc: "assets/icons/profile.svg",
                 title: "Profil Bilgileri",
                 subTitle: "Hesap bilgilerinizi değiştirin",
-                press: () {},
-              ),
-              ProfileMenuCard(
-                svgSrc: "assets/icons/lock.svg",
-                title: "Parola",
-                subTitle: "Parolanızı değiştirin",
-                press: () {},
+                press: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => manageScreen(),
+                  ),
+                ),
               ),
               ProfileMenuCard(
                 svgSrc: "assets/icons/card.svg",
@@ -44,18 +44,6 @@ class Body extends StatelessWidget {
                 svgSrc: "assets/icons/marker.svg",
                 title: "Konumlar",
                 subTitle: "Konum özelliklerinizi ayarlayın",
-                press: () {},
-              ),
-              ProfileMenuCard(
-                svgSrc: "assets/icons/fb.svg",
-                title: "Sosyal Medya Hesapları",
-                subTitle: "Sosyal medya hesaplarınızı eşleştirin",
-                press: () {},
-              ),
-              ProfileMenuCard(
-                svgSrc: "assets/icons/share.svg",
-                title: "Arkadaşlarına Öner",
-                subTitle: "Tek seferlik 5 lira indirim kuponu kazanın",
                 press: () {},
               ),
             ],
