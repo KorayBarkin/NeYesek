@@ -94,10 +94,10 @@ const kErrorBorderSide = BorderSide(color: Colors.red, width: 1);
 // Validator
 final passwordValidator = MultiValidator([
   RequiredValidator(errorText: 'Parola girmeniz zorunludur.'),
-  MinLengthValidator(8,
+  /*MinLengthValidator(8,
       errorText: 'Parolanız en az 8 karakter uzunluğunda olmalıdır.'),
   PatternValidator(r'(?=.*?[#?!@$%^&*-/])',
-      errorText: 'Parolanız en az bir özel karakter içermelidir.')
+      errorText: 'Parolanız en az bir özel karakter içermelidir.')*/
 ]);
 
 final emailValidator = MultiValidator([

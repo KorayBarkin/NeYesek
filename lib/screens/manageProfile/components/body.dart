@@ -4,10 +4,41 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:food_ui_kit/constants.dart';
 import 'package:food_ui_kit/size_config.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    _showDialog1() {
+      showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20.0)),
+            title: Text(
+                "E-Mail adresinize şifre yenileme bağlantısı gönderilmiştir."),
+            content: Text("Lütfen e-mail adresinizi kontrol ediniz."),
+            actions: <Widget>[
+              Padding(
+                padding: const EdgeInsets.only(right: 10.0),
+                child: MaterialButton(
+                  shape: StadiumBorder(),
+                  minWidth: 100,
+                  color: kActiveColor,
+                  child: new Text("Kapat"),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ),
+            ],
+          );
+        },
+      );
+    }
+
     return SafeArea(
       child: SingleChildScrollView(
         child: Padding(
@@ -32,7 +63,11 @@ class Body extends StatelessWidget {
                 svgSrc: "assets/icons/lock.svg",
                 title: "Parola",
                 subTitle: "Parolanızı değiştirin",
-                press: () {},
+                press: () {
+                  FirebaseAuth.instance.sendPasswordResetEmail(
+                      email: FirebaseAuth.instance.currentUser.email);
+                  _showDialog1();
+                },
               ),
             ],
           ),
