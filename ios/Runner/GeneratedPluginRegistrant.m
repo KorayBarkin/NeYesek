@@ -22,17 +22,16 @@
 @import firebase_core;
 #endif
 
-<<<<<<< HEAD
-#if __has_include(<geocoder/GeocoderPlugin.h>)
-#import <geocoder/GeocoderPlugin.h>
-#else
-@import geocoder;
-=======
 #if __has_include(<firebase_database/FLTFirebaseDatabasePlugin.h>)
 #import <firebase_database/FLTFirebaseDatabasePlugin.h>
 #else
 @import firebase_database;
->>>>>>> 90e68747915c93afb48fc1849900480cc7d79e6d
+#endif
+
+#if __has_include(<geocoder/GeocoderPlugin.h>)
+#import <geocoder/GeocoderPlugin.h>
+#else
+@import geocoder;
 #endif
 
 #if __has_include(<geocoding/GeocodingPlugin.h>)
@@ -47,16 +46,16 @@
 @import geolocator;
 #endif
 
-<<<<<<< HEAD
-#if __has_include(<google_sign_in/FLTGoogleSignInPlugin.h>)
-#import <google_sign_in/FLTGoogleSignInPlugin.h>
-#else
-@import google_sign_in;
-=======
 #if __has_include(<google_maps_flutter/FLTGoogleMapsPlugin.h>)
 #import <google_maps_flutter/FLTGoogleMapsPlugin.h>
 #else
 @import google_maps_flutter;
+#endif
+
+#if __has_include(<google_sign_in/FLTGoogleSignInPlugin.h>)
+#import <google_sign_in/FLTGoogleSignInPlugin.h>
+#else
+@import google_sign_in;
 #endif
 
 #if __has_include(<location/LocationPlugin.h>)
@@ -75,7 +74,6 @@
 #import <permission/PermissionPlugin.h>
 #else
 @import permission;
->>>>>>> 8a3f2045f29925f00a2d6073b3212656834607fe
 #endif
 
 #if __has_include(<url_launcher/FLTURLLauncherPlugin.h>)
@@ -90,21 +88,15 @@
   [FLTFirebaseAnalyticsPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTFirebaseAnalyticsPlugin"]];
   [FLTFirebaseAuthPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTFirebaseAuthPlugin"]];
   [FLTFirebaseCorePlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTFirebaseCorePlugin"]];
-<<<<<<< HEAD
-  [GeocoderPlugin registerWithRegistrar:[registry registrarForPlugin:@"GeocoderPlugin"]];
-=======
   [FLTFirebaseDatabasePlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTFirebaseDatabasePlugin"]];
->>>>>>> 90e68747915c93afb48fc1849900480cc7d79e6d
+  [GeocoderPlugin registerWithRegistrar:[registry registrarForPlugin:@"GeocoderPlugin"]];
   [GeocodingPlugin registerWithRegistrar:[registry registrarForPlugin:@"GeocodingPlugin"]];
   [GeolocatorPlugin registerWithRegistrar:[registry registrarForPlugin:@"GeolocatorPlugin"]];
-<<<<<<< HEAD
-  [FLTGoogleSignInPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTGoogleSignInPlugin"]];
-=======
   [FLTGoogleMapsPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTGoogleMapsPlugin"]];
+  [FLTGoogleSignInPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTGoogleSignInPlugin"]];
   [LocationPlugin registerWithRegistrar:[registry registrarForPlugin:@"LocationPlugin"]];
   [MapsLauncherPlugin registerWithRegistrar:[registry registrarForPlugin:@"MapsLauncherPlugin"]];
   [PermissionPlugin registerWithRegistrar:[registry registrarForPlugin:@"PermissionPlugin"]];
->>>>>>> 8a3f2045f29925f00a2d6073b3212656834607fe
   [FLTURLLauncherPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTURLLauncherPlugin"]];
 }
 

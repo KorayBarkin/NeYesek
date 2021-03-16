@@ -128,6 +128,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "flutter_polyline_points",
+      "rootUri": "file:///Users/koraybarkin/Downloads/development/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_polyline_points-0.2.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    },
+    {
       "name": "flutter_svg",
       "rootUri": "file:///Users/koraybarkin/Downloads/development/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_svg-0.20.0-nullsafety.3",
       "packageUri": "lib/",
@@ -150,6 +156,12 @@
       "rootUri": "file:///Users/koraybarkin/Downloads/development/flutter/.pub-cache/hosted/pub.dartlang.org/form_field_validator-1.0.1",
       "packageUri": "lib/",
       "languageVersion": "2.1"
+    },
+    {
+      "name": "geocoder",
+      "rootUri": "file:///Users/koraybarkin/Downloads/development/flutter/.pub-cache/hosted/pub.dartlang.org/geocoder-0.2.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
     },
     {
       "name": "geocoding",
@@ -180,6 +192,12 @@
       "rootUri": "file:///Users/koraybarkin/Downloads/development/flutter/.pub-cache/hosted/pub.dartlang.org/geolocator_web-1.0.1",
       "packageUri": "lib/",
       "languageVersion": "2.10"
+    },
+    {
+      "name": "google_maps_flutter",
+      "rootUri": "file:///Users/koraybarkin/Downloads/development/flutter/.pub-cache/hosted/pub.dartlang.org/google_maps_flutter-0.5.21+15",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
     },
     {
       "name": "google_sign_in",
@@ -222,6 +240,30 @@
       "rootUri": "file:///Users/koraybarkin/Downloads/development/flutter/.pub-cache/hosted/pub.dartlang.org/js-0.6.3",
       "packageUri": "lib/",
       "languageVersion": "2.12"
+    },
+    {
+      "name": "location",
+      "rootUri": "file:///Users/koraybarkin/Downloads/development/flutter/.pub-cache/hosted/pub.dartlang.org/location-3.2.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    },
+    {
+      "name": "location_platform_interface",
+      "rootUri": "file:///Users/koraybarkin/Downloads/development/flutter/.pub-cache/hosted/pub.dartlang.org/location_platform_interface-1.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.4"
+    },
+    {
+      "name": "location_web",
+      "rootUri": "file:///Users/koraybarkin/Downloads/development/flutter/.pub-cache/hosted/pub.dartlang.org/location_web-1.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    },
+    {
+      "name": "maps_launcher",
+      "rootUri": "file:///Users/koraybarkin/Downloads/development/flutter/.pub-cache/hosted/pub.dartlang.org/maps_launcher-1.2.2+2",
+      "packageUri": "lib/",
+      "languageVersion": "2.7"
     },
     {
       "name": "matcher",
@@ -268,6 +310,12 @@
     {
       "name": "pedantic",
       "rootUri": "file:///Users/koraybarkin/Downloads/development/flutter/.pub-cache/hosted/pub.dartlang.org/pedantic-1.9.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    },
+    {
+      "name": "permission",
+      "rootUri": "file:///Users/koraybarkin/Downloads/development/flutter/.pub-cache/hosted/pub.dartlang.org/permission-0.1.7",
       "packageUri": "lib/",
       "languageVersion": "2.1"
     },
@@ -398,7 +446,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2021-03-16T18:58:07.815487Z",
+  "generated": "2021-03-16T21:56:47.300340Z",
   "generator": "pub",
   "generatorVersion": "2.12.1"
 }

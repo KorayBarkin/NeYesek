@@ -64,10 +64,15 @@ PODS:
     - GoogleUtilities/UserDefaults (~> 7.0)
     - PromisesObjC (~> 1.2)
   - Flutter (1.0.0)
+  - geocoder (0.0.1):
+    - Flutter
   - geocoding (1.0.5):
     - Flutter
   - geolocator (6.2.0):
     - Flutter
+  - google_maps_flutter (0.0.1):
+    - Flutter
+    - GoogleMaps
   - google_sign_in (0.0.1):
     - Flutter
     - GoogleSignIn (~> 5.0)
@@ -79,6 +84,11 @@ PODS:
     - nanopb (~> 2.30906.0)
   - GoogleDataTransport (8.1.0):
     - nanopb (~> 2.30906.0)
+  - GoogleMaps (4.2.0):
+    - GoogleMaps/Maps (= 4.2.0)
+  - GoogleMaps/Base (4.2.0)
+  - GoogleMaps/Maps (4.2.0):
+    - GoogleMaps/Base
   - GoogleSignIn (5.0.2):
     - AppAuth (~> 1.2)
     - GTMAppAuth (~> 1.0)
@@ -111,11 +121,17 @@ PODS:
   - GTMSessionFetcher/Full (1.5.0):
     - GTMSessionFetcher/Core (= 1.5.0)
   - leveldb-library (1.22.1)
+  - location (0.0.1):
+    - Flutter
+  - maps_launcher (0.0.1):
+    - Flutter
   - nanopb (2.30906.0):
     - nanopb/decode (= 2.30906.0)
     - nanopb/encode (= 2.30906.0)
   - nanopb/decode (2.30906.0)
   - nanopb/encode (2.30906.0)
+  - permission (0.0.1):
+    - Flutter
   - PromisesObjC (1.2.12)
   - url_launcher (0.0.1):
     - Flutter
@@ -126,9 +142,14 @@ DEPENDENCIES:
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
   - firebase_database (from `.symlinks/plugins/firebase_database/ios`)
   - Flutter (from `Flutter`)
+  - geocoder (from `.symlinks/plugins/geocoder/ios`)
   - geocoding (from `.symlinks/plugins/geocoding/ios`)
   - geolocator (from `.symlinks/plugins/geolocator/ios`)
+  - google_maps_flutter (from `.symlinks/plugins/google_maps_flutter/ios`)
   - google_sign_in (from `.symlinks/plugins/google_sign_in/ios`)
+  - location (from `.symlinks/plugins/location/ios`)
+  - maps_launcher (from `.symlinks/plugins/maps_launcher/ios`)
+  - permission (from `.symlinks/plugins/permission/ios`)
   - url_launcher (from `.symlinks/plugins/url_launcher/ios`)
 
 SPEC REPOS:
@@ -143,6 +164,7 @@ SPEC REPOS:
     - FirebaseInstallations
     - GoogleAppMeasurement
     - GoogleDataTransport
+    - GoogleMaps
     - GoogleSignIn
     - GoogleUtilities
     - GTMAppAuth
@@ -162,12 +184,22 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/firebase_database/ios"
   Flutter:
     :path: Flutter
+  geocoder:
+    :path: ".symlinks/plugins/geocoder/ios"
   geocoding:
     :path: ".symlinks/plugins/geocoding/ios"
   geolocator:
     :path: ".symlinks/plugins/geolocator/ios"
+  google_maps_flutter:
+    :path: ".symlinks/plugins/google_maps_flutter/ios"
   google_sign_in:
     :path: ".symlinks/plugins/google_sign_in/ios"
+  location:
+    :path: ".symlinks/plugins/location/ios"
+  maps_launcher:
+    :path: ".symlinks/plugins/maps_launcher/ios"
+  permission:
+    :path: ".symlinks/plugins/permission/ios"
   url_launcher:
     :path: ".symlinks/plugins/url_launcher/ios"
 
@@ -185,17 +217,23 @@ SPEC CHECKSUMS:
   FirebaseDatabase: 22199cb121a527ae59df646d61426fbb12f5627a
   FirebaseInstallations: 7f7ed0e7e27fb51f57291e1876e2ddb1524126c1
   Flutter: 434fef37c0980e73bb6479ef766c45957d4b510c
+  geocoder: 3cfab70531a0b367e917bafe82df4c30f6d4c45a
   geocoding: 32cfcdb16d38d907caaba65e2e42ad10d38bee58
   geolocator: f5e3de65e241caba7ce3e8a618803387bda73384
+  google_maps_flutter: d0dd62f5a7d39bae61057eb9f52dd778d99c7c6c
   google_sign_in: 6bd214b9c154f881422f5fe27b66aaa7bbd580cc
   GoogleAppMeasurement: 8d3c0aeede16ab7764144b5a4ca8e1d4323841b7
   GoogleDataTransport: 116c84c4bdeb76be2a7a46de51244368f9794eab
+  GoogleMaps: eb03e327edfd70b06de1e6e321653f73712df7ad
   GoogleSignIn: 7137d297ddc022a7e0aa4619c86d72c909fa7213
   GoogleUtilities: abda45f519bc4073aa1171d2f8742108def46017
   GTMAppAuth: 197a8dabfea5d665224aa00d17f164fc2248dab9
   GTMSessionFetcher: b3503b20a988c4e20cc189aa798fd18220133f52
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
+  location: 3a2eed4dd2fab25e7b7baf2a9efefe82b512d740
+  maps_launcher: eae38ee13a9c3f210fa04e04bb4c073fa4c6ed92
   nanopb: 1bf24dd71191072e120b83dd02d08f3da0d65e53
+  permission: c186483e23779d53def6b55986323494927c22c8
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   url_launcher: 6fef411d543ceb26efce54b05a0a40bfd74cbbef
 
