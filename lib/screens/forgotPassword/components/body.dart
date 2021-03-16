@@ -5,6 +5,7 @@ import 'package:food_ui_kit/screens/forgotPassword/reset_email_sent_screen.dart'
 import '../../../constants.dart';
 import '../../../size_config.dart';
 import '../../../components/buttons/primary_button.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class Body extends StatelessWidget {
   @override
@@ -67,6 +68,7 @@ class _ForgotPassFormState extends State<ForgotPassForm> {
               if (_formKey.currentState.validate()) {
                 // If all data are correct then save data to out variables
                 _formKey.currentState.save();
+                //FirebaseAuth.sendPasswordResetEmail(email: _email); //
                 Navigator.push(
                     context,
                     MaterialPageRoute(
