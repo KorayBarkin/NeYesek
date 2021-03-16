@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_ui_kit/components/bottom_nav_bar.dart';
 import 'package:food_ui_kit/screens/findRestaurants/find_restaurants_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import '../../../constants.dart';
 import '../../../size_config.dart';
@@ -40,6 +41,8 @@ class _SignInFormState extends State<SignInForm> {
   @override
   Widget build(BuildContext context) {
     String _email, _password;
+    final auth = FirebaseAuth.instance;
+
     return Form(
       key: _formKey,
       child: Column(
@@ -58,7 +61,7 @@ class _SignInFormState extends State<SignInForm> {
             cursorColor: kActiveColor,
             keyboardType: TextInputType.emailAddress,
             decoration: InputDecoration(
-              hintText: "Email adresi",
+              hintText: "E-mail adresi",
               contentPadding: kTextFieldPadding,
             ),
           ),
@@ -111,17 +114,20 @@ class _SignInFormState extends State<SignInForm> {
           // Sign In Button
           PrimaryButton(
             text: "Giriş Yap",
-            press: () {
+            press: () async {
               if (_formKey.currentState.validate()) {
                 // If all data are correct then save data to out variables
                 _formKey.currentState.save();
-
-                // just for demo
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => BottomNavBar(),
-                    ));
+                try {
+                  await auth.signInWithEmailAndPassword(
+                      email: _email, password: _password);
+                  print("Signed in, you may want to navigate now");
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => BottomNavBar()));
+                } catch (e) {
+                  print("User not found");
+                  _showDialog();
+                }
               } else {
                 // If all data are not valid then start auto validation.
                 setState(() {
@@ -132,6 +138,35 @@ class _SignInFormState extends State<SignInForm> {
           )
         ],
       ),
+    );
+  }
+
+  _showDialog() {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+          title: Text("Girdiğiniz e-posta adresi veya şifre yanlış."),
+          content: Text("Lütfen tekrar deneyiniz."),
+          actions: <Widget>[
+            Padding(
+              padding: const EdgeInsets.only(right: 10.0),
+              child: MaterialButton(
+                shape: StadiumBorder(),
+                minWidth: 100,
+                color: kActiveColor,
+                child: new Text("Kapat"),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ),
+          ],
+        );
+      },
     );
   }
 }

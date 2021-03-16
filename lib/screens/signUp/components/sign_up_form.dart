@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:food_ui_kit/screens/phoneLogin/phone_login_screen.dart';
+import 'package:food_ui_kit/screens/signIn/sign_in_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:food_ui_kit/screens/signUp/components/verify.dart';
 
 import '../../../constants.dart';
 import '../../../size_config.dart';
@@ -22,6 +25,7 @@ class _SignUpFormState extends State<SignUpForm> {
   FocusNode _conformPasswordNode;
 
   String _fullName, _email, _password, _conformPassword;
+  final auth = FirebaseAuth.instance;
 
   @override
   void initState() {
@@ -144,16 +148,34 @@ class _SignUpFormState extends State<SignUpForm> {
           // Sign Up Button
           PrimaryButton(
             text: "Kayıt ol",
-            press: () {
+            press: () async {
               if (_formKey.currentState.validate()) {
                 // If all data are correct then save data to out variables
                 _formKey.currentState.save();
-                Navigator.push(
+                /*auth
+                    .createUserWithEmailAndPassword(
+                        email: _email, password: _password)
+                    .then((_) {
+                  Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(builder: (context) => SignInScreen()));
+                });
+                /*Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) => PghoneLoginScreen(),
                   ),
-                );
+                );*/*/
+                try {
+                  await auth.createUserWithEmailAndPassword(
+                      email: _email, password: _password);
+                  print(
+                      "Signed up is done and now you can verify the email address.");
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => VerifyScreen()));
+                } catch (e) {
+                  print("E-mail is already taken");
+                  _showDialog();
+                }
               } else {
                 // If all data are not valid then start auto validation.
                 setState(() {
@@ -164,6 +186,35 @@ class _SignUpFormState extends State<SignUpForm> {
           ),
         ],
       ),
+    );
+  }
+
+  _showDialog() {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+          title: Text("E-Posta çoktan alınmış."),
+          content: Text("Lütfen tekrar deneyiniz."),
+          actions: <Widget>[
+            Padding(
+              padding: const EdgeInsets.only(right: 10.0),
+              child: MaterialButton(
+                shape: StadiumBorder(),
+                minWidth: 100,
+                color: kActiveColor,
+                child: new Text("Kapat"),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ),
+          ],
+        );
+      },
     );
   }
 }

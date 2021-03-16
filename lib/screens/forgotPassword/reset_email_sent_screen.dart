@@ -18,13 +18,12 @@ class ResetEmailSentScreen extends StatelessWidget {
           children: [
             WelcomeText(
                 title: "Email sıfırlama gönderildi!",
-                text:
-                    "neyesek@gmail.com adresine gerekli bilgileri gönderdik!"),
+                text: "Adresinize gerekli bilgileri gönderdik!"),
             VerticalSpacing(),
-            PrimaryButton(
+            /* PrimaryButton(
               text: "Tekrar Gönder",
-              press: () {},
-            )
+              press: () {FirebaseAuth.sendPasswordResetEmail(email: _email);},
+            )*/
           ],
         ),
       ),
