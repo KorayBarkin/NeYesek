@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Ege\\Desktop\\NeYesekV2\\NeYesek\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-fr-rCA\\values-fr-rCA.xml",
+            "outputFile": "/Users/koraybarkin/NeYesek-14/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-fr-rCA/values-fr-rCA.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Ege\\.gradle\\caches\\transforms-2\\files-2.1\\1eb9386807d095fca599c3de751a779d\\jetified-play-services-basement-17.1.0\\res\\values-fr-rCA\\values.xml",
+                    "source": "/Users/koraybarkin/.gradle/caches/transforms-2/files-2.1/4a1abd9ab6f23c76f154b77917a39db1/jetified-play-services-basement-17.1.0/res/values-fr-rCA/values.xml",
                     "from": {
                         "startLines": "4",
                         "startColumns": "0",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Ege\\.gradle\\caches\\transforms-2\\files-2.1\\3e26ef26d15f163a2f1a31a2130a0254\\core-1.1.0\\res\\values-fr-rCA\\values-fr-rCA.xml",
+                    "source": "/Users/koraybarkin/.gradle/caches/transforms-2/files-2.1/3e26ef26d15f163a2f1a31a2130a0254/core-1.1.0/res/values-fr-rCA/values-fr-rCA.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -38,7 +38,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Ege\\.gradle\\caches\\transforms-2\\files-2.1\\97461efba6c5e9e0983cc52e8129f2d5\\play-services-base-17.1.0\\res\\values-fr-rCA\\values.xml",
+                    "source": "/Users/koraybarkin/.gradle/caches/transforms-2/files-2.1/97461efba6c5e9e0983cc52e8129f2d5/play-services-base-17.1.0/res/values-fr-rCA/values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",

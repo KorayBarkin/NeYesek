@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:food_ui_kit/components/bottom_nav_bar.dart';
 import 'package:food_ui_kit/screens/findRestaurants/find_restaurants_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
+import '../../signIn/components/google_sign_in.dart';
 import '../../../constants.dart';
 import '../../../size_config.dart';
 import '../../../components/buttons/primary_button.dart';

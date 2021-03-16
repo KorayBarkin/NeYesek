@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Ege\\Desktop\\NeYesekV2\\NeYesek\\build\\url_launcher\\intermediates\\res\\merged\\debug\\values-fi\\values-fi.xml",
+            "outputFile": "/Users/koraybarkin/NeYesek-14/build/url_launcher/intermediates/res/merged/debug/values-fi/values-fi.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Ege\\.gradle\\caches\\transforms-2\\files-2.1\\3e26ef26d15f163a2f1a31a2130a0254\\core-1.1.0\\res\\values-fi\\values-fi.xml",
+                    "source": "/Users/koraybarkin/.gradle/caches/transforms-2/files-2.1/3e26ef26d15f163a2f1a31a2130a0254/core-1.1.0/res/values-fi/values-fi.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -16,10 +16,10 @@
             ]
         },
         {
-            "outputFile": "C:\\Users\\Ege\\Desktop\\NeYesekV2\\NeYesek\\build\\url_launcher\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-fi\\values-fi.xml",
+            "outputFile": "/Users/koraybarkin/NeYesek-14/build/url_launcher/intermediates/incremental/mergeDebugResources/merged.dir/values-fi/values-fi.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Ege\\.gradle\\caches\\transforms-2\\files-2.1\\3e26ef26d15f163a2f1a31a2130a0254\\core-1.1.0\\res\\values-fi\\values-fi.xml",
+                    "source": "/Users/koraybarkin/.gradle/caches/transforms-2/files-2.1/3e26ef26d15f163a2f1a31a2130a0254/core-1.1.0/res/values-fi/values-fi.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

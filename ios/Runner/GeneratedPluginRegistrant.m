@@ -40,6 +40,12 @@
 @import geolocator;
 #endif
 
+#if __has_include(<google_sign_in/FLTGoogleSignInPlugin.h>)
+#import <google_sign_in/FLTGoogleSignInPlugin.h>
+#else
+@import google_sign_in;
+#endif
+
 #if __has_include(<url_launcher/FLTURLLauncherPlugin.h>)
 #import <url_launcher/FLTURLLauncherPlugin.h>
 #else
@@ -55,6 +61,7 @@
   [FLTFirebaseDatabasePlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTFirebaseDatabasePlugin"]];
   [GeocodingPlugin registerWithRegistrar:[registry registrarForPlugin:@"GeocodingPlugin"]];
   [GeolocatorPlugin registerWithRegistrar:[registry registrarForPlugin:@"GeolocatorPlugin"]];
+  [FLTGoogleSignInPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTGoogleSignInPlugin"]];
   [FLTURLLauncherPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTURLLauncherPlugin"]];
 }
 

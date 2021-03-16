@@ -2,9 +2,11 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:food_ui_kit/components/buttons/primary_button.dart';
 import 'package:food_ui_kit/constants.dart';
 import 'package:food_ui_kit/size_config.dart';
 import '../../manageProfile/manage_screen.dart';
+import '../../signIn/components/google_sign_in.dart';
 
 class Body extends StatelessWidget {
   @override
@@ -46,6 +48,25 @@ class Body extends StatelessWidget {
                 subTitle: "Konum özelliklerinizi ayarlayın",
                 press: () {},
               ),
+              Container(
+                width: 400,
+                height: 50,
+                margin: EdgeInsets.only(top: 270),
+                child: RaisedButton(
+                  onPressed: () {
+                    final GoogleSignInProvider logout =
+                        new GoogleSignInProvider();
+                    logout.logout();
+                  },
+                  child: Text("ÇIKIŞ YAP",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      )),
+                  color: Colors.red[700],
+                ),
+              )
             ],
           ),
         ),
