@@ -177,7 +177,7 @@
     },
     {
       "name": "google_sign_in",
-      "rootUri": "file:///Users/koraybarkin/Downloads/development/flutter/.pub-cache/hosted/pub.dartlang.org/google_sign_in-4.5.9",
+      "rootUri": "file:///Users/koraybarkin/Downloads/development/flutter/.pub-cache/hosted/pub.dartlang.org/google_sign_in-4.5.4",
       "packageUri": "lib/",
       "languageVersion": "2.1"
     },
@@ -392,7 +392,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2021-03-15T17:22:13.351714Z",
+  "generated": "2021-03-16T12:31:56.861203Z",
   "generator": "pub",
   "generatorVersion": "2.12.1"
 }
