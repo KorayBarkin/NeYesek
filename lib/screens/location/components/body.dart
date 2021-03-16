@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:food_ui_kit/components/current_location.dart';
 
 import '../../location/locationChange.dart';
 import '../components/maps.dart';
 import '../../../constants.dart';
+import '../../../runningData.dart';
 
 class Body extends StatelessWidget {
   @override

@@ -135,7 +135,8 @@ class _GoogleMapsScreenState extends State<GoogleMapsScreen> {
               ),
               GestureDetector(
                 onTapDown: (c) {
-                  //MapsLauncher.launchCoordinates(_ctisBuilding.target.latitude, _ctisBuilding.target.longitude);
+                  // MapsLauncher.launchCoordinates(
+                  //     destination.latitude, destination.longitude);
                   _createPolylines(
                       LatLng(StartingLocation.latitude,
                           StartingLocation.longitude),
