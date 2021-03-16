@@ -43,6 +43,14 @@ dependencies:
   # It provides easy geocoding and reverse-geocoding features
   geocoding: ^1.0.4+1
 
+  #location
+  location: ^3.2.4
+  geocoder: ^0.2.1
+  google_maps_flutter: 0.5.21+15
+  flutter_polyline_points: ^0.2.1
+  permission: ^0.1.7
+  maps_launcher: ^1.2.2+2
+
   firebase_core: ^0.7.0
   firebase_auth: ^0.20.0+1
   firebase_analytics: ^7.0.1

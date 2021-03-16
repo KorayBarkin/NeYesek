@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
 
       /// On first screen must call [SizeConfig().init(context)]
       home: OnboardingScreen(),
-      // home: HomeScreen(),
+      //home: HomeScreen(),
       // home: BottomNavBar(),
     );
   }
