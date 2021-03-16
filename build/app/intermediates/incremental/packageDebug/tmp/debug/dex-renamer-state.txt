@@ -1,4 +1,4 @@
-#Tue Mar 16 18:59:23 EET 2021
-base.0=C\:\\Users\\berat\\Desktop\\neyesek\\Verification\\NeYesek\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\out\\classes.dex
+#Tue Mar 16 21:14:30 EET 2021
+base.0=C\:\\Users\\Ege\\Desktop\\NeYesekV2\\NeYesek\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\out\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex
