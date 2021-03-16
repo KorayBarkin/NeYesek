@@ -6,6 +6,7 @@ import '../../../components/rating_with_counter.dart';
 
 import '../../../constants.dart';
 import '../../../size_config.dart';
+import '../../googleMaps/google_maps_screen.dart';
 
 class RestaurantInfo extends StatelessWidget {
   const RestaurantInfo({
@@ -56,7 +57,14 @@ class RestaurantInfo extends StatelessWidget {
                     textAlign: TextAlign.center,
                     style: kCaptionTextStyle.copyWith(color: kActiveColor),
                   ),
-                  press: () {},
+                  press: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => GoogleMapsScreen(),
+                      ),
+                    );
+                  },
                 ),
               )
             ],

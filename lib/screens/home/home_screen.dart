@@ -5,6 +5,8 @@ import '../../screens/filter/filter_screen.dart';
 import '../../size_config.dart';
 
 import 'components/body.dart';
+import '../../components/current_location.dart';
+import '../../screens/location/locationChange.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -29,7 +31,15 @@ class HomeScreen extends StatelessWidget {
                 .caption
                 .copyWith(color: kActiveColor),
           ),
-          Text("Bilkent")
+          FlatButton(
+            child: CurrentLocation(),
+            onPressed: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => LocationChange(),
+              ),
+            ),
+          ),
         ],
       ),
       actions: [
