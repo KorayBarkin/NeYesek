@@ -20,7 +20,7 @@ class _CurrentLocationState extends State<CurrentLocation> {
   Future<void> _updateLocationName() async {
     //_getAddress(_currentPosition.latitude, _currentPosition.longitude);
     List<geo.Placemark> address = await geo.placemarkFromCoordinates(
-        _CurrentPosition.latitude, _CurrentPosition.longitude);
+        ChoosenLocation.latitude, ChoosenLocation.longitude);
 
     //print(address);
     var toprint = address[0].thoroughfare +
@@ -64,7 +64,7 @@ class _CurrentLocationState extends State<CurrentLocation> {
     super.initState();
     if (ChoosenLocation == null) {
       _getUserLocation();
-    } else if (ChoosenLocation ==
+    } else if (ChoosenLocation !=
         LatLng(_CurrentPosition.latitude, _CurrentPosition.longitude)) {
       _updateLocationName();
     }

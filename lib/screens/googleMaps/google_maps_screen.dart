@@ -29,7 +29,7 @@ class _GoogleMapsScreenState extends State<GoogleMapsScreen> {
   }
 
   static final CameraPosition _cameraPosition = CameraPosition(
-    target: LatLng(StartingLocation.latitude, StartingLocation.longitude),
+    target: LatLng(ChoosenLocation.latitude, ChoosenLocation.longitude),
     //tilt: 59.440717697143555,
     zoom: 14.151926040649414,
   );
@@ -58,9 +58,9 @@ class _GoogleMapsScreenState extends State<GoogleMapsScreen> {
 
         Polyline polyline = Polyline(
             polylineId: id,
-            color: Colors.red,
+            color: Colors.blue,
             points: polylineCoordinates,
-            width: 3,
+            width: 4,
             startCap: Cap.roundCap,
             endCap: Cap.buttCap);
 
@@ -135,12 +135,7 @@ class _GoogleMapsScreenState extends State<GoogleMapsScreen> {
               ),
               GestureDetector(
                 onTapDown: (c) {
-                  // MapsLauncher.launchCoordinates(
-                  //     destination.latitude, destination.longitude);
-                  _createPolylines(
-                      LatLng(StartingLocation.latitude,
-                          StartingLocation.longitude),
-                      destination);
+                  _showMyDialog();
                 },
                 child: Container(
                   margin: EdgeInsets.only(top: 20),
@@ -210,13 +205,56 @@ class _GoogleMapsScreenState extends State<GoogleMapsScreen> {
   Set<Marker> _createMarker() {
     return <Marker>[
       Marker(
-          markerId: MarkerId("User Location"),
-          position: _cameraPosition.target,
+          markerId: MarkerId("destination"),
+          position: destination,
           icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRed))
     ].toSet();
   }
 
   AppBar buildAppBar(BuildContext context) {
     return AppBar();
+  }
+
+  Future<void> _showMyDialog() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Display options'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text(
+                    'Would you like to open in Maps application or just see route here?'),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: Text('Close'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              child: Text('Here'),
+              onPressed: () {
+                _createPolylines(ChoosenLocation, destination);
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              child: Text('Open Maps'),
+              onPressed: () {
+                MapsLauncher.launchCoordinates(
+                    destination.latitude, destination.longitude);
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 }

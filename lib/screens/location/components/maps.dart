@@ -9,11 +9,12 @@ class Maps extends StatefulWidget {
 }
 
 class _MapsState extends State<Maps> {
-  static final CameraPosition _ctisBuilding = CameraPosition(
-    bearing: 180,
-    target: ChoosenLocation,
+  Map<MarkerId, Marker> selected = <MarkerId, Marker>{};
+
+  static CameraPosition _cameraPosition = CameraPosition(
+    target: LatLng(ChoosenLocation.latitude, ChoosenLocation.longitude),
     //tilt: 59.440717697143555,
-    zoom: 19.151926040649414,
+    zoom: 14.151926040649414,
   );
 
   @override
@@ -23,7 +24,24 @@ class _MapsState extends State<Maps> {
         myLocationEnabled: true,
         myLocationButtonEnabled: true,
         zoomGesturesEnabled: true,
-        initialCameraPosition: _ctisBuilding,
+        markers: Set<Marker>.of(selected.values),
+        initialCameraPosition: _cameraPosition,
+        onTap: (argument) {
+          _createMarker(argument);
+          SelectedFromMaps = argument;
+        },
         onMapCreated: (map) {});
+  }
+
+  void _createMarker(LatLng arg) {
+    final Marker marker = Marker(
+        markerId: MarkerId("Selected Location"),
+        position: arg,
+        icon:
+            BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueOrange));
+
+    setState(() {
+      selected[MarkerId("Selected Location")] = marker;
+    });
   }
 }
