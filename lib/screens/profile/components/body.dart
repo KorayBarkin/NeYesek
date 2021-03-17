@@ -7,6 +7,8 @@ import 'package:food_ui_kit/constants.dart';
 import 'package:food_ui_kit/size_config.dart';
 import '../../manageProfile/manage_screen.dart';
 import '../../signIn/components/google_sign_in.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import '../../signIn/sign_in_screen.dart';
 
 class Body extends StatelessWidget {
   @override
@@ -53,10 +55,15 @@ class Body extends StatelessWidget {
                 height: 50,
                 margin: EdgeInsets.only(top: 270),
                 child: RaisedButton(
-                  onPressed: () {
-                    final GoogleSignInProvider logout =
-                        new GoogleSignInProvider();
-                    logout.logout();
+                  onPressed: () async {
+                    await FirebaseAuth.instance.signOut();
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => SignInScreen()));
+                    //final GoogleSignInProvider logout =
+                    // new GoogleSignInProvider();
+                    //logout.logout();
                   },
                   child: Text("ÇIKIŞ YAP",
                       style: TextStyle(

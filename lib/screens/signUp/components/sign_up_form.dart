@@ -228,13 +228,13 @@ class _SignUpFormState extends State<SignUpForm> {
                   newProduct("Kavurma", "Yıldız", "Yağsız Dana Eti",
                       "Muhteşem!", "Sulu Yemek", 10, 35, "kavurma.png");
                   newRestaurant(
-                      "Yıldız Lokantası",
-                      "yildizlokantasi@gmail.com",
-                      "1982'den beri Hizmetinizdedir.",
-                      "Mustafa Kemal Mahallesi Karanfil Sokak No:6/D-C",
+                      "CTIS Burger",
+                      "ctisburger@gmail.com",
+                      "Bilkentin en lezzetli burgerleri.",
+                      "Bilkent Üniversitesi",
                       "05553332211",
-                      10,
-                      "lokantayildiz.png");
+                      9.6,
+                      "assets/images/medium_3.png");
                   newReservation("Berat Özyildiz", "Yıldız Lokantası",
                       "24/02/2021", "2 kişilik masa", true);
                   Navigator.push(context,
