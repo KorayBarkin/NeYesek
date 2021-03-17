@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/koraybarkin/NeYesek-16/build/url_launcher/intermediates/incremental/mergeDebugResources/merged.dir/values-kn/values-kn.xml",
+            "outputFile": "C:\\Users\\berat\\Desktop\\NeYesek2.0\\NeYesek\\build\\url_launcher\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-kn\\values-kn.xml",
             "map": [
                 {
-                    "source": "/Users/koraybarkin/.gradle/caches/transforms-2/files-2.1/3e26ef26d15f163a2f1a31a2130a0254/core-1.1.0/res/values-kn/values-kn.xml",
+                    "source": "C:\\Users\\berat\\.gradle\\caches\\transforms-2\\files-2.1\\3e26ef26d15f163a2f1a31a2130a0254\\core-1.1.0\\res\\values-kn\\values-kn.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -16,10 +16,10 @@
             ]
         },
         {
-            "outputFile": "/Users/koraybarkin/NeYesek-16/build/url_launcher/intermediates/res/merged/debug/values-kn/values-kn.xml",
+            "outputFile": "C:\\Users\\berat\\Desktop\\NeYesek2.0\\NeYesek\\build\\url_launcher\\intermediates\\res\\merged\\debug\\values-kn\\values-kn.xml",
             "map": [
                 {
-                    "source": "/Users/koraybarkin/.gradle/caches/transforms-2/files-2.1/3e26ef26d15f163a2f1a31a2130a0254/core-1.1.0/res/values-kn/values-kn.xml",
+                    "source": "C:\\Users\\berat\\.gradle\\caches\\transforms-2\\files-2.1\\3e26ef26d15f163a2f1a31a2130a0254\\core-1.1.0\\res\\values-kn\\values-kn.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
