@@ -9,6 +9,7 @@ import '../../manageProfile/manage_screen.dart';
 import '../../signIn/components/google_sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../../signIn/sign_in_screen.dart';
+import './menu.dart';
 
 class Body extends StatelessWidget {
   @override
@@ -23,7 +24,7 @@ class Body extends StatelessWidget {
               VerticalSpacing(),
               Text("Hesap Ayarları", style: kH2TextStyle),
               Text(
-                "Hesap ayarlarınızı güncelleyiniz.",
+                "Hesap ayarlarınızı buradan değiştirebilirsiniz.",
                 style: kBodyTextStyle,
               ),
               VerticalSpacing(of: 10),
@@ -49,6 +50,17 @@ class Body extends StatelessWidget {
                 title: "Konumlar",
                 subTitle: "Konum özelliklerinizi ayarlayın",
                 press: () {},
+              ),
+              ProfileMenuCard(
+                svgSrc: "assets/icons/food.svg",
+                title: "Menü",
+                subTitle: "Menü bilgilerini ayarlayın",
+                press: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => MenuScreen(),
+                  ),
+                ),
               ),
               Container(
                 width: 400,
