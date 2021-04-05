@@ -32,7 +32,6 @@ class _SignUpFormState extends State<SignUpForm> {
   String _fullName, _email, _password, _conformPassword;
   final auth = FirebaseAuth.instance;
   List<Customer> customers = [];
-  List<Product> products = [];
   List<Restaurant> restaurants = [];
   List<Reservation> reservations = [];
 
@@ -41,23 +40,6 @@ class _SignUpFormState extends State<SignUpForm> {
     customer.setId(createCustomer(customer));
     this.setState(() {
       customers.add(customer);
-    });
-  }
-
-  void newProduct(
-      String name,
-      String restaurantName,
-      String description,
-      String comments,
-      String category,
-      double rating,
-      double price,
-      String image) {
-    var product = new Product(name, restaurantName, description, comments,
-        category, rating, price, image);
-    product.setId(createProduct(product));
-    this.setState(() {
-      products.add(product);
     });
   }
 
@@ -225,8 +207,6 @@ class _SignUpFormState extends State<SignUpForm> {
                   print(
                       "Signed up is done and now you can verify the email address.");
                   newCustomer(_fullName, _email);
-                  newProduct("Kavurma", "Yıldız", "Yağsız Dana Eti",
-                      "Muhteşem!", "Sulu Yemek", 10, 35, "kavurma.png");
                   newRestaurant(
                       "CTIS Burger",
                       "ctisburger@gmail.com",

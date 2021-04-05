@@ -1,10 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:food_ui_kit/screens/database/database.dart';
+import 'package:food_ui_kit/screens/database/product.dart';
+import 'package:food_ui_kit/screens/database/restaurant.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 
 class MenuScreen extends StatelessWidget {
+  final auth = FirebaseAuth.instance;
+  void newProduct(
+      String name,
+      String restaurantName,
+      String description,
+      String comments,
+      String category,
+      double rating,
+      double price,
+      String image) {
+    var product = new Product(name, restaurantName, description, comments,
+        category, rating, price, image);
+    product.setId(createProduct(product));
+    products.add(product);
+  }
+
+  List<Product> products = [];
   @override
   Widget build(BuildContext context) {
     Future<void> _displayTextInputDialog(BuildContext context) async {
-      String _email;
+      String _email, _name, _category, _description, _priceDummy;
+
+      double price;
       return showDialog(
           context: context,
           builder: (context) {
@@ -25,7 +49,7 @@ class MenuScreen extends StatelessWidget {
                       TextFormField(
                         //autovalidate: _autoValidate,
                         //validator: ,
-                        //onChanged: (value) => _email = value,
+                        onChanged: (value) => _name = value,
                         //controller: ,
                         decoration:
                             InputDecoration(hintText: "Ürün adını giriniz."),
@@ -34,7 +58,7 @@ class MenuScreen extends StatelessWidget {
                       TextFormField(
                         //autovalidate: _autoValidate,
                         //validator: ,
-                        //onChanged: (value) => _email = value,
+                        onChanged: (value) => _category = value,
                         //controller: ,
                         decoration: InputDecoration(
                             hintText: "Ürün kategorisini giriniz."),
@@ -43,7 +67,7 @@ class MenuScreen extends StatelessWidget {
                       TextFormField(
                         //autovalidate: _autoValidate,
                         //validator: ,
-                        //onChanged: (value) => _email = value,
+                        onChanged: (value) => _description = value,
                         //controller: ,
                         decoration:
                             InputDecoration(hintText: "Malzemeleri giriniz."),
@@ -52,7 +76,8 @@ class MenuScreen extends StatelessWidget {
                       TextFormField(
                         //autovalidate: _autoValidate,
                         //validator: ,
-                        //onChanged: (value) => _email = value,
+                        keyboardType: TextInputType.number,
+                        onChanged: (value) => _priceDummy = value,
                         //controller: ,
                         decoration: InputDecoration(
                             hintText: "Ürünün fiyatını giriniz."),
@@ -70,7 +95,31 @@ class MenuScreen extends StatelessWidget {
                     color: Colors.orange[400],
                     child:
                         new Text("Ekle", style: TextStyle(color: Colors.white)),
-                    onPressed: () {},
+                    onPressed: () {
+                      FirebaseDatabase.instance
+                          .reference()
+                          .child("restaurants/")
+                          .once()
+                          .then((DataSnapshot dataSnapshot) {
+                        var keys = dataSnapshot.value.keys;
+                        var values = dataSnapshot.value;
+                        for (var key in keys) {
+                          if (values[key]['email'] == auth.currentUser.email) {
+                            newProduct(
+                                _name,
+                                values[key]['name'],
+                                _description,
+                                null,
+                                _category,
+                                null,
+                                double.parse(_priceDummy),
+                                null);
+                          }
+                        }
+                      });
+
+                      Navigator.of(context).pop();
+                    },
                   ),
                 ),
               ],
