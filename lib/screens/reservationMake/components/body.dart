@@ -2,36 +2,105 @@ import 'package:flutter/material.dart';
 import 'package:food_ui_kit/screens/database/database.dart';
 import 'package:food_ui_kit/screens/database/product.dart';
 import 'package:food_ui_kit/screens/database/restaurant.dart';
+import 'package:food_ui_kit/screens/database/reservation.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:intl/intl.dart';
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
+import '../../../constants.dart';
 
 class Body extends StatelessWidget {
   final auth = FirebaseAuth.instance;
-
-  void newProduct(
-      String name,
-      String restaurantName,
-      String description,
-      String comments,
-      String category,
-      double rating,
-      double price,
-      String image) {
-    var product = new Product(name, restaurantName, description, comments,
-        category, rating, price, image);
-    product.setId(createProduct(product));
-    products.add(product);
+  final database = FirebaseDatabase.instance;
+  void newReservation(String customerName, String restaurantName, String date,
+      String reservationDetail, bool status) {
+    var reservation = new Reservation(
+        customerName, restaurantName, date, reservationDetail, status);
+    reservation.setId(createReservation(reservation));
+    reservations.add(reservation);
   }
 
-  List<Product> products = [];
+  List<Reservation> reservations = [];
   @override
   Widget build(BuildContext context) {
     Future<void> _displayTextInputDialog(BuildContext context) async {
-      String _email, _name, _category, _description, _priceDummy;
+      _successDialog() {
+        showDialog(
+          context: context,
+          barrierDismissible: false,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20.0)),
+              title: Text("Rezervasyon Başarılı"),
+              content: Text(
+                  "Rezervasyon isteğiniz başarıyla restorana iletilmiştir"),
+              actions: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.only(right: 10.0),
+                  child: MaterialButton(
+                    shape: StadiumBorder(),
+                    minWidth: 100,
+                    color: kActiveColor,
+                    child: new Text("Kapat"),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                ),
+              ],
+            );
+          },
+        );
+      }
+
+      _unsuccessDialog() {
+        showDialog(
+          context: context,
+          barrierDismissible: false,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20.0)),
+              title: Text("Lütfen Tekrar Deneyiniz."),
+              content:
+                  Text("Girilen restoran ismine uygun restoran bulunamadı."),
+              actions: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.only(right: 10.0),
+                  child: MaterialButton(
+                    shape: StadiumBorder(),
+                    minWidth: 100,
+                    color: kActiveColor,
+                    child: new Text("Kapat"),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                ),
+              ],
+            );
+          },
+        );
+      }
+
+      String _customerName, _restaurantName, _reservationDetail;
+      DateTime selectedDate;
       final format = DateFormat("yyyy-MM-dd HH:mm");
-      double price;
+      database
+          .reference()
+          .child("customers/")
+          .once()
+          .then((DataSnapshot dataSnapshot) {
+        var keys = dataSnapshot.value.keys;
+        var values = dataSnapshot.value;
+        for (var key in keys) {
+          if (values[key]['email'] == auth.currentUser.email) {
+            _customerName = values[key]['fullName'];
+            print(_customerName);
+          }
+        }
+      });
       return showDialog(
           context: context,
           builder: (context) {
@@ -52,24 +121,24 @@ class Body extends StatelessWidget {
                       TextFormField(
                         //autovalidate: _autoValidate,
                         //validator: ,
-                        onChanged: (value) => _name = value,
+                        onChanged: (value) => _restaurantName = value,
                         //controller: ,
-                        decoration:
-                            InputDecoration(hintText: "Restoran adını giriniz."),
+                        decoration: InputDecoration(
+                            hintText: "Restoran adını giriniz."),
                       ),
                       Text("Açıklama"),
                       TextFormField(
                         //autovalidate: _autoValidate,
                         //validator: ,
-                        onChanged: (value) => _description = value,
+                        onChanged: (value) => _reservationDetail = value,
                         //controller: ,
-                        decoration:
-                            InputDecoration(hintText: "Kaç kişi olacaksınız vb."),
+                        decoration: InputDecoration(
+                            hintText: "Kaç kişi olacaksınız vb."),
                       ),
-                      
-                     Text('Tarih (${format.pattern})'),
+                      Text('Tarih'),
                       DateTimeField(
                         format: format,
+                        onChanged: (value) => selectedDate = value,
                         onShowPicker: (context, currentValue) async {
                           final date = await showDatePicker(
                               context: context,
@@ -79,8 +148,8 @@ class Body extends StatelessWidget {
                           if (date != null) {
                             final time = await showTimePicker(
                               context: context,
-                              initialTime:
-                                  TimeOfDay.fromDateTime(currentValue ?? DateTime.now()),
+                              initialTime: TimeOfDay.fromDateTime(
+                                  currentValue ?? DateTime.now()),
                             );
                             return DateTimeField.combine(date, time);
                           } else {
@@ -99,10 +168,12 @@ class Body extends StatelessWidget {
                     shape: StadiumBorder(),
                     minWidth: 100,
                     color: Colors.orange[400],
-                    child:
-                        new Text("Ekle", style: TextStyle(color: Colors.white)),
+                    child: new Text("Rezervasyon Yap",
+                        style: TextStyle(color: Colors.white)),
                     onPressed: () {
-                      FirebaseDatabase.instance
+                      String _convertedDatetime =
+                          "${selectedDate.year.toString()}-${selectedDate.month.toString().padLeft(2, '0')}-${selectedDate.day.toString().padLeft(2, '0')} ${selectedDate.hour.toString()}-${selectedDate.minute.toString()}";
+                      database
                           .reference()
                           .child("restaurants/")
                           .once()
@@ -110,20 +181,15 @@ class Body extends StatelessWidget {
                         var keys = dataSnapshot.value.keys;
                         var values = dataSnapshot.value;
                         for (var key in keys) {
-                          if (values[key]['email'] == auth.currentUser.email) {
-                            newProduct(
-                                _name,
-                                values[key]['name'],
-                                _description,
-                                null,
-                                _category,
-                                null,
-                                double.parse(_priceDummy),
-                                null);
+                          if (values[key]['name'] == _restaurantName) {
+                            newReservation(_customerName, _restaurantName,
+                                _convertedDatetime, _reservationDetail, false);
+                            _successDialog();
+                          } else {
+                            _unsuccessDialog();
                           }
                         }
                       });
-
                       Navigator.of(context).pop();
                     },
                   ),
@@ -132,7 +198,6 @@ class Body extends StatelessWidget {
             );
           });
     }
-    
 
     return Scaffold(
         body: Column(
