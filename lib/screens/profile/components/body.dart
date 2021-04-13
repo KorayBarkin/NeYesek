@@ -10,6 +10,8 @@ import '../../signIn/components/google_sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../../signIn/sign_in_screen.dart';
 import './menu.dart';
+import '../../reservationMake/reservation_make_screen.dart';
+import '../../reservationTake/reservation_take_screen.dart';
 
 class Body extends StatelessWidget {
   @override
@@ -45,12 +47,7 @@ class Body extends StatelessWidget {
                 subTitle: "Kredi veya banka kartı ekleyin",
                 press: () {},
               ),
-              ProfileMenuCard(
-                svgSrc: "assets/icons/marker.svg",
-                title: "Konumlar",
-                subTitle: "Konum özelliklerinizi ayarlayın",
-                press: () {},
-              ),
+              
               ProfileMenuCard(
                 svgSrc: "assets/icons/food.svg",
                 title: "Menü",
@@ -59,6 +56,28 @@ class Body extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) => MenuScreen(),
+                  ),
+                ),
+              ),
+              ProfileMenuCard(
+                svgSrc: "assets/icons/marker.svg",
+                title: "Rezervasyon Al",
+                subTitle: "Rezervasyon Alma Ekranı",
+                press: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ReservationMakeScreen(),
+                  ),
+                ),
+              ),
+              ProfileMenuCard(
+                svgSrc: "assets/icons/marker.svg",
+                title: "Rezervasyon Onayla",
+                subTitle: "Rezervasyon Onaylama Ekranı",
+                press: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ReservationTakeScreen(),
                   ),
                 ),
               ),
