@@ -1,4 +1,4 @@
-#Wed Mar 17 12:14:08 EET 2021
-base.0=C\:\\Users\\berat\\Desktop\\NeYesek2.0\\NeYesek\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\out\\classes.dex
+#Sat Apr 17 18:15:34 EET 2021
+base.0=/Users/koraybarkin/NeYesek-8/build/app/intermediates/dex/debug/mergeDexDebug/out/classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

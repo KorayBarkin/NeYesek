@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_ui_kit/screens/details/rating_screen.dart';
 
 import '../../../constants.dart';
 import '../../../size_config.dart';
@@ -32,7 +33,12 @@ class FeaturedItems extends StatelessWidget {
                     image: "assets/images/featured _items_${index + 1}.png",
                     foodType: "İtalyan",
                     priceRange: "40 TL",
-                    press: () {},
+                    press: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => RatingScreen(),
+                      ),
+                    ),
                   ),
                 ),
               ),
