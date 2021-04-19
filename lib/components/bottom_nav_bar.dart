@@ -26,7 +26,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
   List<Map<String, dynamic>> _navitems = [
     {"icon": "assets/icons/home.svg", "title": "Ana Sayfa"},
     {"icon": "assets/icons/search.svg", "title": "Arama"},
-    {"icon": "assets/icons/order.svg", "title": "Siparişler"},
+    {"icon": "assets/icons/order.svg", "title": "Rezervasyonlar"},
     {"icon": "assets/icons/profile.svg", "title": "Profil"},
   ];
 

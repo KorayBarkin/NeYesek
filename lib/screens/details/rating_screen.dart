@@ -1,6 +1,15 @@
 import 'package:flutter/material.dart';
 import 'components/comment_rating.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:food_ui_kit/screens/database/comment.dart';
+
+import 'package:food_ui_kit/screens/database/product.dart';
+
+import 'package:food_ui_kit/screens/database/database.dart';
+
+import 'package:food_ui_kit/screens/database/restaurant.dart';
+import 'package:firebase_database/firebase_database.dart';
 
 class RatingScreen extends StatefulWidget {
   @override
@@ -9,7 +18,23 @@ class RatingScreen extends StatefulWidget {
 
 class _RatingScreenState extends State<RatingScreen> {
   int _rating;
+  String _evaluator;
+  String _comment;
+  double _ratingOverall = 0;
+  double _ratingTotal;
+  final auth = FirebaseAuth.instance;
+  final databaseReference = FirebaseDatabase.instance.reference();
+  final database = FirebaseDatabase.instance;
 
+  void newComment(String evaluator, String comment, int rating, String PID) {
+    var commentt = new Comment(evaluator, comment, rating);
+    this.setState(() {
+      commentt.setId(createComment(commentt, PID));
+      comments.add(commentt);
+    });
+  }
+
+  List<Comment> comments = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,13 +54,16 @@ class _RatingScreenState extends State<RatingScreen> {
             children: [
               Text("Karışık Pizza",
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
-              Text("Ne Yesek Pizza",
+              Text("CTIS Burger",
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16))
             ],
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [Text("Puan: 4.7"), Text("Puan: 4.2")],
+            children: [
+              Text("Puan: 4.5" ),
+              Text("Puan: 4.2")
+            ],
           ),
           Spacer(),
           Rating((rating) {
@@ -50,6 +78,7 @@ class _RatingScreenState extends State<RatingScreen> {
               autocorrect: true,
               enableSuggestions: true,
               maxLines: 7,
+              onChanged: (value) => _comment = value,
               //keyboardType: TextInputType.multiline,
               decoration: InputDecoration.collapsed(
                   hintText: "Yorumunuzu buraya giriniz..."),
@@ -58,6 +87,35 @@ class _RatingScreenState extends State<RatingScreen> {
           Spacer(),
           GestureDetector(
             onTapDown: (c) {
+              database
+                  .reference()
+                  .child("customers/")
+                  .once()
+                  .then((DataSnapshot dataSnapshot) {
+                var keys = dataSnapshot.value.keys;
+                var values = dataSnapshot.value;
+                for (var key in keys) {
+                  if (values[key]['email'] == auth.currentUser.email) {
+                    _evaluator = values[key]['fullName'];
+                    print(_evaluator);
+                  }
+                }
+              });
+
+              database
+                  .reference()
+                  .child("products/")
+                  .once()
+                  .then((DataSnapshot dataSnapshot) {
+                var keys = dataSnapshot.value.keys;
+                var values = dataSnapshot.value;
+                for (var key in keys) {
+                  if (values[key]['restaurantName'] == 'CTIS Burger' &&
+                      values[key]['name'] == 'Karisik Pizza') {
+                    newComment(_evaluator, _comment, _rating, key);
+                   
+                }
+              });
               Fluttertoast.showToast(
                   msg: "Yorumunuz başarıyla gönderildi!",
                   toastLength: Toast.LENGTH_SHORT,

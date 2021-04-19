@@ -4,20 +4,14 @@ import 'package:food_ui_kit/screens/database/product.dart';
 import 'package:food_ui_kit/screens/database/restaurant.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:food_ui_kit/screens/database/comment.dart';
 
 class MenuScreen extends StatelessWidget {
   final auth = FirebaseAuth.instance;
-  void newProduct(
-      String name,
-      String restaurantName,
-      String description,
-      String comments,
-      String category,
-      double rating,
-      double price,
-      String image) {
-    var product = new Product(name, restaurantName, description, comments,
-        category, rating, price, image);
+  void newProduct(String name, String restaurantName, String description,
+      List<Comment> comments, String category, double price, String image) {
+    var product = new Product(
+        name, restaurantName, description, comments, category, price, image);
     product.setId(createProduct(product));
     products.add(product);
   }
@@ -111,7 +105,6 @@ class MenuScreen extends StatelessWidget {
                                 _description,
                                 null,
                                 _category,
-                                null,
                                 double.parse(_priceDummy),
                                 null);
                           }

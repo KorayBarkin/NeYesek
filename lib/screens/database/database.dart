@@ -3,6 +3,7 @@ import 'customer.dart';
 import 'product.dart';
 import 'restaurant.dart';
 import 'reservation.dart';
+import 'comment.dart';
 
 final databaseReference = FirebaseDatabase.instance.reference();
 
@@ -27,5 +28,11 @@ DatabaseReference createRestaurant(Restaurant restaurant) {
 DatabaseReference createReservation(Reservation reservation) {
   var id = databaseReference.child('reservations/').push();
   id.set(reservation.toJson());
+  return id;
+}
+
+DatabaseReference createComment(Comment comment, String Pid) {
+  var id = databaseReference.child('products/' + Pid + '/comments/').push();
+  id.set(comment.toJson());
   return id;
 }
