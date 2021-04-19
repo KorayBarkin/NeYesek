@@ -60,10 +60,7 @@ class _RatingScreenState extends State<RatingScreen> {
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Text("Puan: " + _ratingOverall.toString()),
-              Text("Puan: 4.2")
-            ],
+            children: [Text("Puan: 4.5 "), Text("Puan: 4.2")],
           ),
           Spacer(),
           Rating((rating) {
