@@ -53,16 +53,6 @@ class _SignUpFormState extends State<SignUpForm> {
     });
   }
 
-  void newReservation(String customerName, String restaurantName, String date,
-      String reservationDetail, bool status) {
-    var reservation = new Reservation(
-        customerName, restaurantName, date, reservationDetail, status);
-    reservation.setId(createReservation(reservation));
-    this.setState(() {
-      reservations.add(reservation);
-    });
-  }
-
   @override
   void initState() {
     super.initState();
@@ -215,8 +205,7 @@ class _SignUpFormState extends State<SignUpForm> {
                       "05553332211",
                       9.6,
                       "assets/images/medium_3.png");
-                  newReservation("Berat Özyildiz", "Yıldız Lokantası",
-                      "24/02/2021", "2 kişilik masa", true);
+
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => VerifyScreen()));
                 } catch (e) {

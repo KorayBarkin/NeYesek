@@ -13,10 +13,15 @@ import '../../orderDetails/order_details_screen.dart';
 class Body extends StatelessWidget {
   final auth = FirebaseAuth.instance;
   final database = FirebaseDatabase.instance;
-  void newReservation(String customerName, String restaurantName, String date,
-      String reservationDetail, bool status) {
-    var reservation = new Reservation(
-        customerName, restaurantName, date, reservationDetail, status);
+  void newReservation(
+      String customerName,
+      String customerEmail,
+      String restaurantName,
+      String date,
+      String reservationDetail,
+      bool status) {
+    var reservation = new Reservation(customerName, customerEmail,
+        restaurantName, date, reservationDetail, status);
     reservation.setId(createReservation(reservation));
     reservations.add(reservation);
   }
@@ -85,7 +90,10 @@ class Body extends StatelessWidget {
         );
       }
 
-      String _customerName, _restaurantName, _reservationDetail;
+      String _customerName,
+          _restaurantName,
+          _reservationDetail,
+          _customerEmail = auth.currentUser.email;
       DateTime selectedDate;
       final format = DateFormat("yyyy-MM-dd HH:mm");
       database
@@ -183,8 +191,13 @@ class Body extends StatelessWidget {
                         var values = dataSnapshot.value;
                         for (var key in keys) {
                           if (values[key]['name'] == _restaurantName) {
-                            newReservation(_customerName, _restaurantName,
-                                _convertedDatetime, _reservationDetail, false);
+                            newReservation(
+                                _customerName,
+                                _customerEmail,
+                                _restaurantName,
+                                _convertedDatetime,
+                                _reservationDetail,
+                                false);
                             _successDialog();
                           } else {
                             _unsuccessDialog();
