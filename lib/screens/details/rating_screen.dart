@@ -61,7 +61,7 @@ class _RatingScreenState extends State<RatingScreen> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Text("Puan: 4.5" ),
+              Text("Puan: " + _ratingOverall.toString()),
               Text("Puan: 4.2")
             ],
           ),
@@ -113,7 +113,9 @@ class _RatingScreenState extends State<RatingScreen> {
                   if (values[key]['restaurantName'] == 'CTIS Burger' &&
                       values[key]['name'] == 'Karisik Pizza') {
                     newComment(_evaluator, _comment, _rating, key);
-                   
+                    var rates = values[key]['comments'].value.keys;
+                    var valuesRate = values[key]['coments'].value;
+                  }
                 }
               });
               Fluttertoast.showToast(
