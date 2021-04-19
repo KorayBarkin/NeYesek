@@ -7,7 +7,7 @@ class OrderDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Siparişler"),
+        title: Text("Rezervasyonlar"),
       ),
       body: Body(),
     );

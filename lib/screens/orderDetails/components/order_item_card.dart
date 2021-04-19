@@ -13,7 +13,7 @@ class OrderedItemCard extends StatelessWidget {
   }) : super(key: key);
   final int numOfItem;
   final String title, description;
-  final double price;
+  final String price;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class OrderedItemCard extends StatelessWidget {
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            buildNumOfItem(),
+            //buildNumOfItem(),
             HorizontalSpacing(of: 10),
             Expanded(
               child: Column(
@@ -47,7 +47,7 @@ class OrderedItemCard extends StatelessWidget {
             ),
             HorizontalSpacing(of: 10),
             Text(
-              "$price TL",
+              "$price",
               style: kCaptionTextStyle.copyWith(color: kActiveColor),
             )
           ],

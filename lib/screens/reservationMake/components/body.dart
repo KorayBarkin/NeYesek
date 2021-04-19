@@ -8,6 +8,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:intl/intl.dart';
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 import '../../../constants.dart';
+import '../../orderDetails/order_details_screen.dart';
 
 class Body extends StatelessWidget {
   final auth = FirebaseAuth.instance;
@@ -256,7 +257,12 @@ class Body extends StatelessWidget {
           Center(
             child: GestureDetector(
               onTapDown: (c) {
-                //CODE HERE
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => OrderDetailsScreen(),
+                  ),
+                );
               },
               child: Container(
                 margin: EdgeInsets.only(top: 20),

@@ -12,6 +12,7 @@ import '../../signIn/sign_in_screen.dart';
 import './menu.dart';
 import '../../reservationMake/reservation_make_screen.dart';
 import '../../reservationTake/reservation_take_screen.dart';
+import '../../takeReservationScreen/order_details_screen.dart';
 
 class Body extends StatelessWidget {
   @override
@@ -47,7 +48,6 @@ class Body extends StatelessWidget {
                 subTitle: "Kredi veya banka kartı ekleyin",
                 press: () {},
               ),
-              
               ProfileMenuCard(
                 svgSrc: "assets/icons/food.svg",
                 title: "Menü",
@@ -77,7 +77,7 @@ class Body extends StatelessWidget {
                 press: () => Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => ReservationTakeScreen(),
+                    builder: (context) => takeReservationScreen(),
                   ),
                 ),
               ),
