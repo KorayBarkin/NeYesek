@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:food_ui_kit/components/buttons/primary_button.dart';
 import 'package:food_ui_kit/constants.dart';
+import 'package:food_ui_kit/screens/resturantReport/report_screen.dart';
 import 'package:food_ui_kit/size_config.dart';
 import '../../manageProfile/manage_screen.dart';
 import '../../signIn/components/google_sign_in.dart';
@@ -47,6 +48,17 @@ class Body extends StatelessWidget {
                 title: "Konumlar",
                 subTitle: "Konum özelliklerinizi ayarlayın",
                 press: () {},
+              ),
+              ProfileMenuCard(
+                svgSrc: "assets/icons/food.svg",
+                title: "Generate Report",
+                subTitle: "Report Something",
+                press: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => reportScreen(),
+                  ),
+                ),
               ),
               Container(
                 width: 400,
