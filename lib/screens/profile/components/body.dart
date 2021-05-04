@@ -8,6 +8,12 @@ import 'package:food_ui_kit/screens/resturantReport/report_screen.dart';
 import 'package:food_ui_kit/size_config.dart';
 import '../../manageProfile/manage_screen.dart';
 import '../../signIn/components/google_sign_in.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import '../../signIn/sign_in_screen.dart';
+import './menu.dart';
+import '../../reservationMake/reservation_make_screen.dart';
+import '../../reservationTake/reservation_take_screen.dart';
+import '../../takeReservationScreen/order_details_screen.dart';
 
 class Body extends StatelessWidget {
   @override
@@ -22,7 +28,7 @@ class Body extends StatelessWidget {
               VerticalSpacing(),
               Text("Hesap Ayarları", style: kH2TextStyle),
               Text(
-                "Hesap ayarlarınızı güncelleyiniz.",
+                "Hesap ayarlarınızı buradan değiştirebilirsiniz.",
                 style: kBodyTextStyle,
               ),
               VerticalSpacing(of: 10),
@@ -44,10 +50,37 @@ class Body extends StatelessWidget {
                 press: () {},
               ),
               ProfileMenuCard(
+                svgSrc: "assets/icons/food.svg",
+                title: "Menü",
+                subTitle: "Menü bilgilerini ayarlayın",
+                press: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => MenuScreen(),
+                  ),
+                ),
+              ),
+              ProfileMenuCard(
                 svgSrc: "assets/icons/marker.svg",
-                title: "Konumlar",
-                subTitle: "Konum özelliklerinizi ayarlayın",
-                press: () {},
+                title: "Rezervasyon Al",
+                subTitle: "Rezervasyon Alma Ekranı",
+                press: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ReservationMakeScreen(),
+                  ),
+                ),
+              ),
+              ProfileMenuCard(
+                svgSrc: "assets/icons/marker.svg",
+                title: "Rezervasyon Onayla",
+                subTitle: "Rezervasyon Onaylama Ekranı",
+                press: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => takeReservationScreen(),
+                  ),
+                ),
               ),
               ProfileMenuCard(
                 svgSrc: "assets/icons/food.svg",
@@ -63,12 +96,17 @@ class Body extends StatelessWidget {
               Container(
                 width: 400,
                 height: 50,
-                margin: EdgeInsets.only(top: 270),
+                margin: EdgeInsets.only(top: 180),
                 child: RaisedButton(
-                  onPressed: () {
-                    final GoogleSignInProvider logout =
-                        new GoogleSignInProvider();
-                    logout.logout();
+                  onPressed: () async {
+                    await FirebaseAuth.instance.signOut();
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => SignInScreen()));
+                    //final GoogleSignInProvider logout =
+                    // new GoogleSignInProvider();
+                    //logout.logout();
                   },
                   child: Text("ÇIKIŞ YAP",
                       style: TextStyle(

@@ -22,22 +22,23 @@ class Body extends StatelessWidget {
                     const EdgeInsets.symmetric(vertical: kDefaultPadding / 2),
                 child: OrderedItemCard(
                   title: demoItems[index]["title"],
-                  description:
-                      "Mozeralla peyniri, özel pizza sosu, sucuk, mısır, zeytin",
+                  description: "4 kişilik rezervasyon",
                   numOfItem: demoItems[index]["numOfItem"],
-                  price: demoItems[index]["price"].toDouble(),
+                  price: demoItems[index]["price"],
                 ),
               ),
             ),
-            buildPriceRow(text: "Toplam:", price: 102.98),
-            VerticalSpacing(of: 10),
-            buildPriceRow(text: "Bahşiş:", price: 0),
-            VerticalSpacing(of: 10),
-            buildTotal(price: 20),
+            //buildPriceRow(text: "Toplam:", price: 102.98),
+            //VerticalSpacing(of: 10),
+            //buildPriceRow(text: "Bahşiş:", price: 0),
+            //VerticalSpacing(of: 10),
+            //buildTotal(price: 20),
             VerticalSpacing(of: 40),
             PrimaryButton(
-              text: "Toplam (102.98 TL)",
-              press: () {},
+              text: "Geri Dön",
+              press: () {
+                Navigator.of(context).pop();
+              },
             ),
           ],
         ),
@@ -80,7 +81,7 @@ class Body extends StatelessWidget {
           style: kBodyTextStyle.copyWith(color: kMainColor),
         ),
         Text(
-          "$price TL",
+          "$price",
           style: kBodyTextStyle.copyWith(color: kMainColor),
         )
       ],
@@ -90,18 +91,18 @@ class Body extends StatelessWidget {
 
 const List<Map> demoItems = [
   {
-    "title": "Karışık Pizza",
-    "price": 40,
+    "title": "Berat Özyıldız",
+    "price": "03 / 04 / 2021",
     "numOfItem": 1,
   },
   {
-    "title": "New York Pizza",
-    "price": 34,
+    "title": "Koray Barkın Cıngı",
+    "price": "19 / 03 / 2021",
     "numOfItem": 1,
   },
   {
-    "title": "Margaritha Pizza",
-    "price": 28,
+    "title": "Ege Güney Daldaban",
+    "price": "02 / 01 / 2021",
     "numOfItem": 2,
   },
 ];

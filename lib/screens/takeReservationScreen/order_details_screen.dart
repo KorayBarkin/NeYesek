@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'components/body.dart';
 
-class OrderDetailsScreen extends StatelessWidget {
+class takeReservationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

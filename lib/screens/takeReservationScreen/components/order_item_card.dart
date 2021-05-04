@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:fluttertoast/fluttertoast.dart';
 import '../../../constants.dart';
 import '../../../size_config.dart';
 
@@ -22,8 +22,8 @@ class OrderedItemCard extends StatelessWidget {
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            //buildNumOfItem(),
-            HorizontalSpacing(of: 10),
+            buildNumOfItem(),
+            HorizontalSpacing(of: 30),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -58,19 +58,36 @@ class OrderedItemCard extends StatelessWidget {
     );
   }
 
+  void toastMessage(String str) {
+    Fluttertoast.showToast(
+        msg: str,
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.CENTER,
+        timeInSecForIosWeb: 2,
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+        fontSize: 25.0);
+  }
+
   Container buildNumOfItem() {
     return Container(
       height: 24,
-      width: 24,
+      width: 70,
       alignment: Alignment.center,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(4)),
-        border:
-            Border.all(width: 0.5, color: Color(0xFF868686).withOpacity(0.3)),
-      ),
-      child: Text(
-        numOfItem.toString(),
-        style: kSecondaryBodyTextStyle.copyWith(color: kActiveColor),
+      child: Row(
+        children: [
+          GestureDetector(
+              child: Icon(Icons.check_circle, color: Colors.green),
+              onTap: () {
+                toastMessage("Rezervasyon onaylandı.");
+              }),
+          HorizontalSpacing(of: 20),
+          GestureDetector(
+              child: Icon(Icons.cancel, color: Colors.red),
+              onTap: () {
+                toastMessage("Rezervasyon reddedildi.");
+              }),
+        ],
       ),
     );
   }

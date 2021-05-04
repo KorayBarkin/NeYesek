@@ -28,6 +28,12 @@
 @import firebase_database;
 #endif
 
+#if __has_include(<fluttertoast/FluttertoastPlugin.h>)
+#import <fluttertoast/FluttertoastPlugin.h>
+#else
+@import fluttertoast;
+#endif
+
 #if __has_include(<geocoder/GeocoderPlugin.h>)
 #import <geocoder/GeocoderPlugin.h>
 #else
@@ -89,6 +95,7 @@
   [FLTFirebaseAuthPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTFirebaseAuthPlugin"]];
   [FLTFirebaseCorePlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTFirebaseCorePlugin"]];
   [FLTFirebaseDatabasePlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTFirebaseDatabasePlugin"]];
+  [FluttertoastPlugin registerWithRegistrar:[registry registrarForPlugin:@"FluttertoastPlugin"]];
   [GeocoderPlugin registerWithRegistrar:[registry registrarForPlugin:@"GeocoderPlugin"]];
   [GeocodingPlugin registerWithRegistrar:[registry registrarForPlugin:@"GeocodingPlugin"]];
   [GeolocatorPlugin registerWithRegistrar:[registry registrarForPlugin:@"GeolocatorPlugin"]];

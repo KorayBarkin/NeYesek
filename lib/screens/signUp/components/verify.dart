@@ -34,10 +34,27 @@ class _VerifyScreenState extends State<VerifyScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Center(
-      child: Text(
-          ' Doğrulama maili ${user.email} adlı adresinize gönderildi. Lüften e-mail adresinizi Doğrulayınız ve Giriş Sayfasına Yönlendirilmeyi Bekleyiniz. '),
-    ));
+      body: Column(
+        children: [
+          Container(
+            margin: EdgeInsets.only(top: 150),
+            height: 130,
+            width: 300,
+            child: Image.asset("assets/images/NeYesek_banner.png"),
+          ),
+          Center(
+            child: Container(
+                height: 150,
+                width: 300,
+                margin: EdgeInsets.only(top: 100, left: 10),
+                child: Text(
+                    "Doğrulama maili ${user.email} adlı adresinize gönderildi. Lüften e-mail adresinizi doğrulayınız ve giriş sayfasına yönlendirilmeyi bekleyiniz.",
+                    style:
+                        TextStyle(fontWeight: FontWeight.bold, fontSize: 15))),
+          )
+        ],
+      ),
+    );
   }
 
   Future<void> checkEmailVerified() async {

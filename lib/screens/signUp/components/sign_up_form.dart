@@ -32,7 +32,6 @@ class _SignUpFormState extends State<SignUpForm> {
   String _fullName, _email, _password, _conformPassword;
   final auth = FirebaseAuth.instance;
   List<Customer> customers = [];
-  List<Product> products = [];
   List<Restaurant> restaurants = [];
   List<Reservation> reservations = [];
 
@@ -44,23 +43,6 @@ class _SignUpFormState extends State<SignUpForm> {
     });
   }
 
-  void newProduct(
-      String name,
-      String restaurantName,
-      String description,
-      String comments,
-      String category,
-      double rating,
-      double price,
-      String image) {
-    var product = new Product(name, restaurantName, description, comments,
-        category, rating, price, image);
-    product.setId(createProduct(product));
-    this.setState(() {
-      products.add(product);
-    });
-  }
-
   void newRestaurant(String name, String email, String description,
       String address, String phoneNumber, double rating, String image) {
     var restaurant = new Restaurant(
@@ -68,16 +50,6 @@ class _SignUpFormState extends State<SignUpForm> {
     restaurant.setId(createRestaurant(restaurant));
     this.setState(() {
       restaurants.add(restaurant);
-    });
-  }
-
-  void newReservation(String customerName, String restaurantName, String date,
-      String reservationDetail, bool status) {
-    var reservation = new Reservation(
-        customerName, restaurantName, date, reservationDetail, status);
-    reservation.setId(createReservation(reservation));
-    this.setState(() {
-      reservations.add(reservation);
     });
   }
 
@@ -225,18 +197,15 @@ class _SignUpFormState extends State<SignUpForm> {
                   print(
                       "Signed up is done and now you can verify the email address.");
                   newCustomer(_fullName, _email);
-                  newProduct("Kavurma", "Yıldız", "Yağsız Dana Eti",
-                      "Muhteşem!", "Sulu Yemek", 10, 35, "kavurma.png");
                   newRestaurant(
-                      "Yıldız Lokantası",
-                      "yildizlokantasi@gmail.com",
-                      "1982'den beri Hizmetinizdedir.",
-                      "Mustafa Kemal Mahallesi Karanfil Sokak No:6/D-C",
+                      "CTIS Burger",
+                      "ctisburger@gmail.com",
+                      "Bilkentin en lezzetli burgerleri.",
+                      "Bilkent Üniversitesi",
                       "05553332211",
-                      10,
-                      "lokantayildiz.png");
-                  newReservation("Berat Özyildiz", "Yıldız Lokantası",
-                      "24/02/2021", "2 kişilik masa", true);
+                      9.6,
+                      "assets/images/medium_3.png");
+
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => VerifyScreen()));
                 } catch (e) {
