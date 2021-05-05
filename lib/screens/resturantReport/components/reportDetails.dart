@@ -19,14 +19,14 @@ class report_Details extends StatelessWidget {
               VerticalSpacing(),
               Text("Ne yesek Pizza", style: kH2TextStyle),
               Text(
-                "Your Resturant Details.",
+                "Restoranınızın Raporu",
                 style: kBodyTextStyle,
               ),
               VerticalSpacing(of: 10),
               ProfileMenuCard(
                 svgSrc: "assets/icons/order.svg",
                 title: "4.7 / 5",
-                subTitle: "Resturant Overall Rating",
+                subTitle: "Restoran Genel Puanı",
                 press: () {},
               ),
               ProfileMenuCard(
@@ -38,13 +38,13 @@ class report_Details extends StatelessWidget {
               ProfileMenuCard(
                 svgSrc: "assets/icons/delivery.svg",
                 title: "23",
-                subTitle: "Total Orders",
+                subTitle: "Toplam Siparişler",
                 press: () {},
               ),
               ProfileMenuCard(
                 svgSrc: "assets/icons/order.svg",
                 title: "450 TL",
-                subTitle: "Total Income",
+                subTitle: "Toplam Gelir",
                 press: () {},
               ),
             ],

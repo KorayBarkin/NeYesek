@@ -19,16 +19,16 @@ class Body extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               VerticalSpacing(),
-              Text("Managr Resturant", style: kH2TextStyle),
+              Text("Restoranı Yönet", style: kH2TextStyle),
               Text(
-                "Choose option.",
+                "Rapor tipini seçiniz",
                 style: kBodyTextStyle,
               ),
               VerticalSpacing(of: 10),
               ProfileMenuCard(
                 svgSrc: "assets/icons/order.svg",
-                title: "Weekly",
-                subTitle: "Weekly report.",
+                title: "Haftalık",
+                subTitle: "Haftalık rapor",
                 press: () {
                   Navigator.push(
                       context,
@@ -39,8 +39,8 @@ class Body extends StatelessWidget {
               ),
               ProfileMenuCard(
                 svgSrc: "assets/icons/order.svg",
-                title: "Monthly",
-                subTitle: "Monthly Report.",
+                title: "Aylık",
+                subTitle: "Aylık rapor",
                 press: () {
                   Navigator.push(
                     context,

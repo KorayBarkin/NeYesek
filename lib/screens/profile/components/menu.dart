@@ -6,6 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:food_ui_kit/screens/database/comment.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:food_ui_kit/screens/profile/components/display_menu.dart';
 
 class MenuScreen extends StatelessWidget {
   final auth = FirebaseAuth.instance;
@@ -210,7 +211,11 @@ class MenuScreen extends StatelessWidget {
           Center(
             child: GestureDetector(
               onTapDown: (c) {
-                //CODE HERE
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => DisplayMenuScreen(),
+                    ));
               },
               child: Container(
                 margin: EdgeInsets.only(top: 20),
