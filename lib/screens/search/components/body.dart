@@ -29,7 +29,7 @@ class _BodyState extends State<Body> {
         rating: 7.2,
         numOfRating: 231,
         deliveryTime: 20,
-        images: null,
+        image: null,
         foodType: ["Fastfood", "Türk"],
         press: null));
     searchList.add(new RestaurantInfoBigCard(
@@ -37,7 +37,7 @@ class _BodyState extends State<Body> {
         rating: 4.5,
         numOfRating: 231,
         deliveryTime: 20,
-        images: null,
+        image: null,
         foodType: ["Fastfood", "İtalyan"],
         press: null));
     searchList.add(new RestaurantInfoBigCard(
@@ -45,7 +45,7 @@ class _BodyState extends State<Body> {
         rating: 5.1,
         numOfRating: 231,
         deliveryTime: 20,
-        images: null,
+        image: null,
         foodType: ["Fastfood", "Amerikan"],
         press: null));
     searchList.add(new RestaurantInfoBigCard(
@@ -53,7 +53,7 @@ class _BodyState extends State<Body> {
         rating: 9.4,
         numOfRating: 231,
         deliveryTime: 20,
-        images: null,
+        image: null,
         foodType: ["Fastfood", "Türk"],
         press: null));
     myList.add(new RestaurantInfoBigCard(
@@ -61,7 +61,7 @@ class _BodyState extends State<Body> {
         rating: 9.4,
         numOfRating: 231,
         deliveryTime: 20,
-        images: null,
+        image: null,
         foodType: ["Fastfood", "Türk"],
         press: null));
     myList.add(new RestaurantInfoBigCard(
@@ -69,7 +69,7 @@ class _BodyState extends State<Body> {
         rating: 5.1,
         numOfRating: 231,
         deliveryTime: 20,
-        images: null,
+        image: null,
         foodType: ["Fastfood", "Amerikan"],
         press: null));
     myList.add(new RestaurantInfoBigCard(
@@ -77,7 +77,7 @@ class _BodyState extends State<Body> {
         rating: 4.5,
         numOfRating: 231,
         deliveryTime: 20,
-        images: null,
+        image: null,
         foodType: ["Fastfood", "İtalyan"],
         press: null));
     myList.add(new RestaurantInfoBigCard(
@@ -85,7 +85,7 @@ class _BodyState extends State<Body> {
         rating: 7.2,
         numOfRating: 231,
         deliveryTime: 20,
-        images: null,
+        image: null,
         foodType: ["Fastfood", "Türk"],
         press: null));
     Future.delayed(Duration(seconds: 1), () {
@@ -110,7 +110,7 @@ class _BodyState extends State<Body> {
   void buildCard() {
     RestaurantInfoBigCard(
       // Images are List<String>
-      images: demoBigImages..shuffle(),
+      image: demoBigImages[3],
       name: "McDonald's",
       rating: 8.6,
       numOfRating: 200,
@@ -146,7 +146,7 @@ class _BodyState extends State<Body> {
                   padding: const EdgeInsets.only(bottom: kDefaultPadding),
                   child: RestaurantInfoBigCard(
                     // Images are List<String>
-                    images: demoBigImages..shuffle(),
+                    image: demoBigImages[2],
                     name: searchList[index].name,
                     rating: searchList[index].rating,
                     numOfRating: 200,

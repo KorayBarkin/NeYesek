@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:food_ui_kit/screens/details/components/iteams.dart';
 
 import '../../../constants.dart';
 import '../../../size_config.dart';
@@ -7,9 +8,12 @@ import '../../price_range_and_food_type.dart';
 import '../../rating_with_counter.dart';
 import '../../small_dot.dart';
 import 'big_card_image_slide.dart';
+import 'big_card_image.dart';
+import 'package:food_ui_kit/demoData.dart';
 
 class RestaurantInfoBigCard extends StatelessWidget {
-  final List<String> images, foodType;
+  final List<String> foodType;
+  final String image;
   final String name;
   final double rating;
   final int numOfRating, deliveryTime;
@@ -23,7 +27,7 @@ class RestaurantInfoBigCard extends StatelessWidget {
     @required this.numOfRating,
     @required this.deliveryTime,
     this.isFreeDelivery = true,
-    @required this.images,
+    @required this.image,
     @required this.foodType,
     @required this.press,
   }) : super(key: key);
@@ -36,7 +40,7 @@ class RestaurantInfoBigCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // pass list of images here
-          BigCardImageSlide(images: images),
+          BigCardImageSlide(images: demoBigImages..shuffle()),
           VerticalSpacing(of: 10),
           Text(name, style: kSubHeadTextStyle),
           PriceRangeAndFoodtype(foodType: foodType),

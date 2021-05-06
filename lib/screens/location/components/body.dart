@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:food_ui_kit/components/current_location.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-import '../../location/locationChange.dart';
 import '../components/maps.dart';
 import '../../../constants.dart';
 import '../../../runningData.dart';
-import '../../../components/current_location.dart';
 
 class Body extends StatefulWidget {
   @override

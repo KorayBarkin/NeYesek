@@ -12,6 +12,7 @@ import '../../../size_config.dart';
 import 'medium_card_list.dart';
 
 class Body extends StatelessWidget {
+  List data = demoMediumCardData..shuffle();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -55,33 +56,62 @@ class Body extends StatelessWidget {
             SectionTitle(title: "Tüm restoranlar", press: () {}),
             VerticalSpacing(of: 15),
 
-            // Demo list of Big Cards
-            ...List.generate(
-              // For demo we use 4 items
-              3,
-              (index) => Padding(
-                padding: const EdgeInsets.fromLTRB(
-                    kDefaultPadding, 0, kDefaultPadding, kDefaultPadding),
-                child: RestaurantInfoBigCard(
-                  // Images are List<String>
-                  images: demoBigImages..shuffle(),
-                  name: "McDonald's",
-                  rating: 8.6,
-                  numOfRating: 200,
-                  deliveryTime: 25,
-                  foodType: [
-                    "Fastfood",
-                    "Amerikan",
-                  ],
-                  press: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => DetailsScreen(),
+            SizedBox(
+              //height: double.infinity,
+              child: ListView.builder(
+                shrinkWrap: true,
+                scrollDirection: Axis.vertical,
+                itemCount: data.length,
+                itemBuilder: (context, index) => Padding(
+                  padding: const EdgeInsets.fromLTRB(
+                      kDefaultPadding, 0, kDefaultPadding, kDefaultPadding),
+                  child: RestaurantInfoBigCard(
+                    image: data[index]['image'],
+                    name: data[index]['name'],
+                    deliveryTime: data[index]['deliveryTime'],
+                    rating: data[index]['rating'],
+                    numOfRating: 200,
+                    foodType: [
+                      "Fastfood",
+                      "Amerikan",
+                    ],
+                    press: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => DetailsScreen(),
+                      ),
                     ),
                   ),
                 ),
               ),
-            )
+            ),
+            // Demo list of Big Cards
+            // ...List.generate(
+            //   // For demo we use 4 items
+            //   3,
+            //   (index) => Padding(
+            //     padding: const EdgeInsets.fromLTRB(
+            //         kDefaultPadding, 0, kDefaultPadding, kDefaultPadding),
+            //     child: RestaurantInfoBigCard(
+            //       // Images are List<String>
+            //       image: demoBigImages[2],
+            //       name: "McDonald's",
+            //       rating: 8.6,
+            //       numOfRating: 200,
+            //       deliveryTime: 25,
+            //       foodType: [
+            //         "Fastfood",
+            //         "Amerikan",
+            //       ],
+            //       press: () => Navigator.push(
+            //         context,
+            //         MaterialPageRoute(
+            //           builder: (context) => DetailsScreen(),
+            //         ),
+            //       ),
+            //     ),
+            //   ),
+            // )
           ],
         ),
       ),

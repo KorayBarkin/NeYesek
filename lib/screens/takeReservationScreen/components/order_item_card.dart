@@ -6,7 +6,7 @@ import '../../../size_config.dart';
 class OrderedItemCard extends StatelessWidget {
   const OrderedItemCard({
     Key key,
-    @required this.numOfItem,
+    this.numOfItem,
     @required this.title,
     @required this.description,
     @required this.price,

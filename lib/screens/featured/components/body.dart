@@ -39,7 +39,7 @@ class _BodyState extends State<Body> {
                 ? BigCardScalton()
                 : RestaurantInfoBigCard(
                     // Images are List<String>
-                    images: demoBigImages..shuffle(),
+                    image: demoBigImages[0],
                     name: "Ne Yesek Pizza",
                     rating: 9.6,
                     numOfRating: 200,
