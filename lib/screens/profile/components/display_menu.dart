@@ -25,10 +25,12 @@ class _DisplayMenuScreenState extends State<DisplayMenuScreen> {
                 FirebaseFirestore.instance.collection('products').snapshots(),
             builder: (context, snapshot) {
               if (!snapshot.hasData)
-                return Text("Yükleniyor... Lütfen bekleyiniz.");
-              return Column(
-                children: <Widget>[Text(snapshot.data.docs[0]['name'])],
-              );
+                return Text("Loading... Please wait.");
+              else {
+                return Column(
+                  children: <Widget>[Text(snapshot.data.docs[0]['name'])],
+                );
+              }
             })
       ],
     ));

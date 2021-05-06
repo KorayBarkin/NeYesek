@@ -7,6 +7,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:food_ui_kit/screens/database/comment.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:food_ui_kit/screens/profile/components/display_menu.dart';
+import 'package:food_ui_kit/screens/profile/components/display_menu_screen.dart';
 
 class MenuScreen extends StatelessWidget {
   final auth = FirebaseAuth.instance;
