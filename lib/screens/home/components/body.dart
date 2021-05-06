@@ -19,7 +19,7 @@ class Body extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
+          children: <Widget>[
             VerticalSpacing(of: 10),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -57,10 +57,11 @@ class Body extends StatelessWidget {
             VerticalSpacing(of: 15),
 
             SizedBox(
-              //height: double.infinity,
+              height: 500,
+              //width: getProportionateScreenWidth(254),
               child: ListView.builder(
-                shrinkWrap: true,
-                scrollDirection: Axis.vertical,
+                //shrinkWrap: true,
+                //scrollDirection: Axis.vertical,
                 itemCount: data.length,
                 itemBuilder: (context, index) => Padding(
                   padding: const EdgeInsets.fromLTRB(
@@ -85,6 +86,7 @@ class Body extends StatelessWidget {
                 ),
               ),
             ),
+
             // Demo list of Big Cards
             // ...List.generate(
             //   // For demo we use 4 items
@@ -118,3 +120,5 @@ class Body extends StatelessWidget {
     );
   }
 }
+
+myListview() {}
