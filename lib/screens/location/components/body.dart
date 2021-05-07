@@ -30,7 +30,7 @@ class _BodyState extends State<Body> {
               icon: Icon(
                 Icons.location_on,
               ),
-              label: Text("Current Location"),
+              label: Text("Anlık Konum"),
               textColor: kActiveColor,
               onPressed: () {
                 ChoosenLocation = StartingLocation;
@@ -41,7 +41,7 @@ class _BodyState extends State<Body> {
               icon: Icon(
                 Icons.map,
               ),
-              label: Text("Select from map"),
+              label: Text("Haritada Seçilen Konum"),
               textColor: kActiveColor,
               onPressed: () {
                 if (SelectedFromMaps == null) {

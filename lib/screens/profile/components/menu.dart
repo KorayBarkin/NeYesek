@@ -180,38 +180,6 @@ class MenuScreen extends StatelessWidget {
           Center(
             child: GestureDetector(
               onTapDown: (c) {
-                //CODE HERE
-              },
-              child: Container(
-                margin: EdgeInsets.only(top: 20),
-                height: 70,
-                width: 220,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(100.0),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Color(0x80000000),
-                        blurRadius: 10.0,
-                        offset: Offset(0.0, 5.0),
-                      ),
-                    ],
-                    color: Colors.orange[300]),
-                child: Center(
-                  child: Text(
-                    'ÜRÜNLERİ DÜZENLE',
-                    style: TextStyle(
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white),
-                  ),
-                ),
-              ),
-            ),
-          ),
-          Spacer(),
-          Center(
-            child: GestureDetector(
-              onTapDown: (c) {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
