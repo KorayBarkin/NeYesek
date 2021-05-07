@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:food_ui_kit/components/buttons/primary_button.dart';
 import 'package:food_ui_kit/constants.dart';
 import 'package:food_ui_kit/size_config.dart';
-import '../order_details_screen.dart';
 import 'order_item_card.dart';
 import 'package:food_ui_kit/screens/database/reservation.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -15,8 +14,6 @@ class Body extends StatefulWidget {
 
 class _BodyState extends State<Body> {
   List<Reservation> reservationList = [];
-  Reservation res = new Reservation('customerName', 'customerEmail',
-      'restaurantName', 'date', 'reservationDetail', true);
   final auth = FirebaseAuth.instance;
   final database = FirebaseDatabase.instance;
 
