@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_ui_kit/components/buttons/primary_button.dart';
 import 'package:food_ui_kit/constants.dart';
+import 'package:food_ui_kit/screens/details/rating_screen.dart';
 import 'package:food_ui_kit/size_config.dart';
 import 'package:food_ui_kit/screens/database/reservation.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -18,6 +19,7 @@ class _BodyState extends State<Body> {
   final auth = FirebaseAuth.instance;
   final database = FirebaseDatabase.instance;
   void initState() {
+    super.initState();
     database
         .reference()
         .child("reservations/")
@@ -60,7 +62,6 @@ class _BodyState extends State<Body> {
               child: Column(
                 children: [
                   VerticalSpacing(),
-                  // List of cart items
                   ...List.generate(
                     reservationList.length,
                     (index) => Padding(
@@ -73,11 +74,19 @@ class _BodyState extends State<Body> {
                       ),
                     ),
                   ),
-                  //buildPriceRow(text: "Toplam:", price: 102.98),
-                  //VerticalSpacing(of: 10),
-                  //buildPriceRow(text: "Bahşiş:", price: 0),
-                  //VerticalSpacing(of: 10),
-                  //buildTotal(price: 20),
+                  GestureDetector(
+                      child: Text(
+                        "Yorum Yap",
+                        style: TextStyle(fontSize: 16),
+                        textAlign: TextAlign.end,
+                      ),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => RatingScreen()),
+                        );
+                      }),
                   VerticalSpacing(of: 40),
                   PrimaryButton(
                     text: "Geri Dön",

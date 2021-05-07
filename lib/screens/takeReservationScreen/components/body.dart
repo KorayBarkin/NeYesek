@@ -18,6 +18,7 @@ class _BodyState extends State<Body> {
   final database = FirebaseDatabase.instance;
 
   void initState() {
+    super.initState();
     database
         .reference()
         .child("reservations/")
@@ -84,21 +85,3 @@ class _BodyState extends State<Body> {
     );
   }
 }
-
-const List<Map> demoItems = [
-  {
-    "restaurantName": "Berat Özyıldız",
-    "description": "4 kişilik rezervasyon",
-    "date": "03 / 04 / 2021",
-  },
-  {
-    "restaurantName": "Koray Barkın Cıngı",
-    "description": "5 kişilik rezervasyon",
-    "date": "19 / 03 / 2021",
-  },
-  {
-    "restaurantName": "Ege Güney Daldaban",
-    "description": "6 kişilik rezervasyon",
-    "date": "02 / 01 / 2021",
-  },
-];
