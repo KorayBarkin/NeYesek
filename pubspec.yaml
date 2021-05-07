@@ -58,6 +58,7 @@ dependencies:
 #datepicker
   datetime_picker_formfield: ^1.0.0
   cloud_firestore: ^0.16.0+1
+  lite_rolling_switch: ^0.1.1
   
 dev_dependencies:
   flutter_test:

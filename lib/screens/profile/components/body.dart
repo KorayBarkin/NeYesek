@@ -84,8 +84,8 @@ class Body extends StatelessWidget {
               ),
               ProfileMenuCard(
                 svgSrc: "assets/icons/food.svg",
-                title: "Generate Report",
-                subTitle: "Report Something",
+                title: "Restoran Raporu Oluştur",
+                subTitle: "Aylık ve haftalık rapor oluşturur",
                 press: () => Navigator.push(
                   context,
                   MaterialPageRoute(

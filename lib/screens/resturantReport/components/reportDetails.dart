@@ -17,7 +17,7 @@ class report_Details extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               VerticalSpacing(),
-              Text("Ne yesek Pizza", style: kH2TextStyle),
+              Text("Ne Yesek Pizza", style: kH2TextStyle),
               Text(
                 "Restoranınızın Raporu",
                 style: kBodyTextStyle,
@@ -32,7 +32,7 @@ class report_Details extends StatelessWidget {
               ProfileMenuCard(
                 svgSrc: "assets/icons/food.svg",
                 title: "Cheeseburger",
-                subTitle: "Most prefered meal",
+                subTitle: "En çok tercih edilen ürün",
                 press: () {},
               ),
               ProfileMenuCard(

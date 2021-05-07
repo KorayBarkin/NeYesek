@@ -9,6 +9,7 @@ import '../../../components/welcome_text.dart';
 import '../../../screens/signUp/sign_up_screen.dart';
 import 'sign_in_form.dart';
 import 'package:provider/provider.dart';
+import 'package:lite_rolling_switch/lite_rolling_switch.dart';
 
 class Body extends StatelessWidget {
   @override
@@ -27,6 +28,23 @@ class Body extends StatelessWidget {
                     "Giriş yapmak için email adresinizi \nve parolanızı girin, siz de keşfetmeye başlayın :)",
               ),
             ),
+
+            LiteRollingSwitch(
+              //initial value
+              value: true,
+              textOn: 'Kullanıcı',
+              textOff: 'Restoran',
+              colorOn: Colors.greenAccent[700],
+              colorOff: Colors.redAccent[700],
+              iconOn: Icons.person,
+              iconOff: Icons.fastfood_rounded,
+              textSize: 15.0,
+              onChanged: (bool state) {
+                //Use it to manage the different states
+                print('Current State of SWITCH IS: $state');
+              },
+            ),
+            VerticalSpacing(),
 
             // SignInForm contains forget password
             SignInForm(),
