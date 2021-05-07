@@ -4,11 +4,17 @@ import '../../../components/cards/iteam_card.dart';
 import '../../../constants.dart';
 
 class Items extends StatefulWidget {
+  final Map<String, dynamic> data;
+  Items({this.data});
+
   @override
-  _ItemsState createState() => _ItemsState();
+  _ItemsState createState() => _ItemsState(data: data);
 }
 
 class _ItemsState extends State<Items> {
+  final Map<String, dynamic> data;
+  _ItemsState({this.data});
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -28,23 +34,18 @@ class _ItemsState extends State<Items> {
         ),
         // VerticalSpacing(),
         ...List.generate(
-          demoData.length,
+          data['menu'].length,
           (index) => Padding(
             padding: const EdgeInsets.symmetric(
                 horizontal: kDefaultPadding - 5, vertical: kDefaultPadding / 2),
             child: ItemCard(
-              title: demoData[index]["title"],
-              description: demoData[index]["description"],
-              image: demoData[index]["image"],
-              foodType: demoData[index]['foodType'],
-              price: demoData[index]["price"],
-              priceRange: demoData[index]["priceRange"],
-              press: () => Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => AddToOrderScrreen(),
-                ),
-              ),
+              title: data['menu'][index]["title"],
+              description: data['menu'][index]["description"],
+              image: data['menu'][index]["image"],
+              foodType: data['menu'][index]['foodType'],
+              price: data['menu'][index]["price"],
+              rating: data['menu'][index]["rating"],
+              press: () {},
             ),
           ),
         ),
@@ -70,15 +71,3 @@ final List<Tab> demoTabs = <Tab>[
     child: Text('Yan ürünler'),
   ),
 ];
-
-final List<Map<String, dynamic>> demoData = List.generate(
-  3,
-  (index) => {
-    "image": "assets/images/featured _items_${index + 1}.png",
-    "title": "New York Pizza",
-    "description": "Bol mozeralla ve domates soslu efsane lezzet.",
-    "price": 40.0,
-    "foodType": "Amerikan",
-    "priceRange": "9.8",
-  },
-);

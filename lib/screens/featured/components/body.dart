@@ -4,6 +4,7 @@ import '../../../components/scalton/big_card_scalton.dart';
 import '../../../constants.dart';
 
 import '../../../demoData.dart';
+import '../../details/details_screen.dart';
 
 /// Just for show the scalton we use [StatefulWidget]
 class Body extends StatefulWidget {
@@ -12,8 +13,9 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
+  var data = featuredData;
+
   bool isLoading = true;
-  int demoDataLength = 4;
 
   @override
   void initState() {
@@ -32,20 +34,24 @@ class _BodyState extends State<Body> {
         padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
         child: ListView.builder(
           // while we dont have our data bydefault we show 3 scalton
-          itemCount: isLoading ? 3 : demoDataLength,
+          itemCount: isLoading ? 3 : data.length,
           itemBuilder: (context, index) => Padding(
             padding: const EdgeInsets.only(bottom: kDefaultPadding),
             child: isLoading
                 ? BigCardScalton()
                 : RestaurantInfoBigCard(
-                    // Images are List<String>
-                    image: demoBigImages[0],
-                    name: "Ne Yesek Pizza",
-                    rating: 9.6,
-                    numOfRating: 200,
-                    deliveryTime: 25,
-                    foodType: ["Bilkent'in en iyisi!"],
-                    press: () {},
+                    image: data[index]['image'],
+                    name: data[index]['name'],
+                    deliveryTime: data[index]['deliveryTime'],
+                    rating: data[index]['rating'],
+                    numOfRating: data[index]['numberOfRating'],
+                    foodType: data[index]['foodType'],
+                    press: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => DetailsScreen(data: data[index]),
+                      ),
+                    ),
                   ),
           ),
         ),

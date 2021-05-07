@@ -6,9 +6,8 @@ import '../../../size_config.dart';
 import 'featured_item_card.dart';
 
 class FeaturedItems extends StatelessWidget {
-  const FeaturedItems({
-    Key key,
-  }) : super(key: key);
+  final Map<String, dynamic> data;
+  FeaturedItems({this.data});
 
   @override
   Widget build(BuildContext context) {
@@ -25,14 +24,15 @@ class FeaturedItems extends StatelessWidget {
           child: Row(
             children: [
               ...List.generate(
-                3, // for demo we use 3
+                data['featureMenu'].length, // for demo we use 3
                 (index) => Padding(
                   padding: const EdgeInsets.only(left: kDefaultPadding - 5),
                   child: FeaturedItemCard(
-                    title: "Karışık Pizza",
-                    image: "assets/images/featured _items_${index + 1}.png",
-                    foodType: "İtalyan",
-                    priceRange: "40 TL",
+                    title: data['featureMenu'][index]['title'],
+                    image: data['featureMenu'][index]['image'],
+                    foodType: data['featureMenu'][index]['foodType'],
+                    priceRange:
+                        data['featureMenu'][index]['price'].toString() + " TL",
                     press: () => Navigator.push(
                       context,
                       MaterialPageRoute(

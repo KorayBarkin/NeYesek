@@ -9,12 +9,19 @@ import 'package:permission/permission.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 
 class GoogleMapsScreen extends StatefulWidget {
+  final Map<String, dynamic> data;
+
+  GoogleMapsScreen({this.data});
+
   @override
-  _GoogleMapsScreenState createState() => _GoogleMapsScreenState();
+  _GoogleMapsScreenState createState() => _GoogleMapsScreenState(data: data);
 }
 
 class _GoogleMapsScreenState extends State<GoogleMapsScreen> {
   GoogleMapController _controller;
+
+  final Map<String, dynamic> data;
+  _GoogleMapsScreenState({this.data});
 
   //hardcoded
   var destination = LatLng(39.90599, 32.7619113);

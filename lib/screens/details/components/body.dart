@@ -6,6 +6,9 @@ import 'iteams.dart';
 import 'restaurrant_info.dart';
 
 class Body extends StatelessWidget {
+  final Map<String, dynamic> data;
+  Body({this.data});
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -14,10 +17,10 @@ class Body extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             VerticalSpacing(of: 10),
-            RestaurantInfo(),
+            RestaurantInfo(data: data),
             VerticalSpacing(),
-            FeaturedItems(),
-            Items(),
+            FeaturedItems(data: data),
+            Items(data: data),
           ],
         ),
       ),

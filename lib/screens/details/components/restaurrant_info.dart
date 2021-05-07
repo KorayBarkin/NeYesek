@@ -9,9 +9,8 @@ import '../../../size_config.dart';
 import '../../googleMaps/google_maps_screen.dart';
 
 class RestaurantInfo extends StatelessWidget {
-  const RestaurantInfo({
-    Key key,
-  }) : super(key: key);
+  final Map<String, dynamic> data;
+  RestaurantInfo({this.data});
 
   @override
   Widget build(BuildContext context) {
@@ -21,32 +20,28 @@ class RestaurantInfo extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Ne Yesek Pizza",
+            data['name'],
             style: kH2TextStyle,
             maxLines: 1,
           ),
           VerticalSpacing(of: 10),
-          PriceRangeAndFoodtype(
-            foodType: [
-              "İtalyan",
-              "Amerikan",
-            ],
-          ),
+          PriceRangeAndFoodtype(foodType: data['foodType']),
           VerticalSpacing(of: 10),
-          RatingWithCounter(rating: 4.3, numOfRating: 200),
+          RatingWithCounter(
+              rating: data['rating'], numOfRating: data['numberOfRating']),
           VerticalSpacing(),
           Row(
             children: [
               buildDeliveryInfo(
                 iconSrc: "assets/icons/fire.svg",
-                text: "En iyi pizzacı!",
-                subText: "Bilkent, Ankara",
+                text: data['title'],
+                subText: data['location'],
               ),
               HorizontalSpacing(),
               buildDeliveryInfo(
                 iconSrc: "assets/icons/rating.svg",
                 text: "Puan",
-                subText: "9.4",
+                subText: data['rating'].toString(),
               ),
               Spacer(),
               SizedBox(
@@ -61,7 +56,7 @@ class RestaurantInfo extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => GoogleMapsScreen(),
+                        builder: (context) => GoogleMapsScreen(data: data),
                       ),
                     );
                   },

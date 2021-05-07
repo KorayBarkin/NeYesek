@@ -5,11 +5,13 @@ import 'package:food_ui_kit/screens/search/search_screen.dart';
 import 'components/body.dart';
 
 class DetailsScreen extends StatelessWidget {
+  final Map<String, dynamic> data;
+  DetailsScreen({this.data});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildAppBar(context),
-      body: Body(),
+      body: Body(data: data),
     );
   }
 

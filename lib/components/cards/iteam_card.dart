@@ -12,12 +12,12 @@ class ItemCard extends StatelessWidget {
     @required this.image,
     @required this.foodType,
     @required this.price,
-    @required this.priceRange,
+    @required this.rating,
     @required this.press,
   }) : super(key: key);
 
-  final String title, description, image, foodType, priceRange;
-  final double price;
+  final String title, description, image, foodType;
+  final double price, rating;
   final VoidCallback press;
 
   @override
@@ -66,7 +66,7 @@ class ItemCard extends StatelessWidget {
                     Row(
                       children: [
                         Text(
-                          priceRange,
+                          rating.toString(),
                           style: textStyle,
                         ),
                         Padding(

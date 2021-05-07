@@ -56,64 +56,56 @@ class Body extends StatelessWidget {
             SectionTitle(title: "Tüm restoranlar", press: () {}),
             VerticalSpacing(of: 15),
 
-            SizedBox(
-              height: 500,
-              //width: getProportionateScreenWidth(254),
-              child: ListView.builder(
-                //shrinkWrap: true,
-                //scrollDirection: Axis.vertical,
-                itemCount: data.length,
-                itemBuilder: (context, index) => Padding(
-                  padding: const EdgeInsets.fromLTRB(
-                      kDefaultPadding, 0, kDefaultPadding, kDefaultPadding),
-                  child: RestaurantInfoBigCard(
-                    image: data[index]['image'],
-                    name: data[index]['name'],
-                    deliveryTime: data[index]['deliveryTime'],
-                    rating: data[index]['rating'],
-                    numOfRating: 200,
-                    foodType: [
-                      "Fastfood",
-                      "Amerikan",
-                    ],
-                    press: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => DetailsScreen(),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-
-            // Demo list of Big Cards
-            // ...List.generate(
-            //   // For demo we use 4 items
-            //   3,
-            //   (index) => Padding(
-            //     padding: const EdgeInsets.fromLTRB(
-            //         kDefaultPadding, 0, kDefaultPadding, kDefaultPadding),
-            //     child: RestaurantInfoBigCard(
-            //       // Images are List<String>
-            //       image: demoBigImages[2],
-            //       name: "McDonald's",
-            //       rating: 8.6,
-            //       numOfRating: 200,
-            //       deliveryTime: 25,
-            //       foodType: [
-            //         "Fastfood",
-            //         "Amerikan",
-            //       ],
-            //       press: () => Navigator.push(
-            //         context,
-            //         MaterialPageRoute(
-            //           builder: (context) => DetailsScreen(),
+            // SizedBox(
+            //   height: 500,
+            //   //width: getProportionateScreenWidth(254),
+            //   child: ListView.builder(
+            //     //shrinkWrap: true,
+            //     //scrollDirection: Axis.vertical,
+            //     itemCount: data.length,
+            //     itemBuilder: (context, index) => Padding(
+            //       padding: const EdgeInsets.fromLTRB(
+            //           kDefaultPadding, 0, kDefaultPadding, kDefaultPadding),
+            //       child: RestaurantInfoBigCard(
+            //         image: data[index]['image'],
+            //         name: data[index]['name'],
+            //         deliveryTime: data[index]['deliveryTime'],
+            //         rating: data[index]['rating'],
+            //         numOfRating: data[index]['numberOfRaiting'],
+            //         foodType: data[index]['foodType'],
+            //         press: () => Navigator.push(
+            //           context,
+            //           MaterialPageRoute(
+            //             builder: (context) => DetailsScreen(data: data[index]),
+            //           ),
             //         ),
             //       ),
             //     ),
             //   ),
-            // )
+            // ),
+
+            //list of Big Cards
+            ...List.generate(
+              data.length,
+              (index) => Padding(
+                padding: const EdgeInsets.fromLTRB(
+                    kDefaultPadding, 0, kDefaultPadding, kDefaultPadding),
+                child: RestaurantInfoBigCard(
+                  image: data[index]['image'],
+                  name: data[index]['name'],
+                  deliveryTime: data[index]['deliveryTime'],
+                  rating: data[index]['rating'],
+                  numOfRating: data[index]['numberOfRating'],
+                  foodType: data[index]['foodType'],
+                  press: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => DetailsScreen(data: data[index]),
+                    ),
+                  ),
+                ),
+              ),
+            )
           ],
         ),
       ),

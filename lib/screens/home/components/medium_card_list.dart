@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_ui_kit/screens/details/details_screen.dart';
 
 import '../../../components/cards/medium/restaurant_info_medium_card.dart';
 import '../../../components/scalton/medium_card_scalton.dart';
@@ -30,7 +31,7 @@ class _MediumCardListState extends State<MediumCardList> {
   @override
   Widget build(BuildContext context) {
     // only for demo
-    List data = demoMediumCardData..shuffle();
+    List data = featuredData;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -51,9 +52,15 @@ class _MediumCardListState extends State<MediumCardList> {
                       image: data[index]['image'],
                       name: data[index]['name'],
                       location: data[index]['location'],
-                      delivertTime: data[index]['delivertTime'],
+                      delivertTime: data[index]['deliveryTime'],
                       rating: data[index]['rating'],
-                      press: () {},
+                      press: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              DetailsScreen(data: data[index]),
+                        ),
+                      ),
                     ),
                   ),
                 ),

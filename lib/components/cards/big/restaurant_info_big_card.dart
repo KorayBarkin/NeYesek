@@ -40,7 +40,10 @@ class RestaurantInfoBigCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // pass list of images here
-          BigCardImageSlide(images: demoBigImages..shuffle()),
+          AspectRatio(
+            aspectRatio: 1.81,
+            child: BigCardImage(image: image),
+          ),
           VerticalSpacing(of: 10),
           Text(name, style: kSubHeadTextStyle),
           PriceRangeAndFoodtype(foodType: foodType),
