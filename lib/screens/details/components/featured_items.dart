@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_ui_kit/screens/details/rating_screen.dart';
-
+import 'package:food_ui_kit/screens/comments/comments.dart';
 import '../../../constants.dart';
 import '../../../size_config.dart';
 import 'featured_item_card.dart';
@@ -36,7 +36,7 @@ class FeaturedItems extends StatelessWidget {
                     press: () => Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => RatingScreen(),
+                        builder: (context) => CommentsScreen(),
                       ),
                     ),
                   ),
