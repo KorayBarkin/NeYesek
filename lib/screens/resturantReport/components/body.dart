@@ -7,6 +7,7 @@ import 'package:food_ui_kit/size_config.dart';
 import '../../../constants.dart';
 import '../../../size_config.dart';
 import '../components/reportDetails.dart';
+import '../components/monthly.dart';
 
 class Body extends StatelessWidget {
   @override
@@ -45,7 +46,7 @@ class Body extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => report_Details(),
+                      builder: (context) => monthly(),
                     ),
                   );
                 },

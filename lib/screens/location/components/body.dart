@@ -65,18 +65,18 @@ class _BodyState extends State<Body> {
       barrierDismissible: false, // user must tap button!
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Location not selected on map'),
+          title: Text('Lokasyon haritadan seçilmemiş'),
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
-                Text('Please select a location on map first'),
-                Text('To select, tap on map the location you want to select'),
+                Text('Önce haritadan lokasyon seçiniz.'),
+                Text('Seçmek için haritadan bir konuma tıklayınız'),
               ],
             ),
           ),
           actions: <Widget>[
             TextButton(
-              child: Text('Close'),
+              child: Text('Kapat'),
               onPressed: () {
                 Navigator.of(context).pop();
               },

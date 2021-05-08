@@ -19,7 +19,7 @@ class report_Details extends StatelessWidget {
               VerticalSpacing(),
               Text("Ne Yesek Pizza", style: kH2TextStyle),
               Text(
-                "Restoranınızın Raporu",
+                "Restoranınızın Haftalık Raporu",
                 style: kBodyTextStyle,
               ),
               VerticalSpacing(of: 10),

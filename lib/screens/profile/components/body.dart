@@ -96,7 +96,7 @@ class Body extends StatelessWidget {
               Container(
                 width: 400,
                 height: 50,
-                margin: EdgeInsets.only(top: 180),
+                margin: EdgeInsets.only(top: 50),
                 child: RaisedButton(
                   onPressed: () async {
                     await FirebaseAuth.instance.signOut();

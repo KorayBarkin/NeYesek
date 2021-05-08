@@ -28,7 +28,7 @@ class BodyState extends State<Body> {
     searchList = new List<RestaurantInfoBigCard>();
     searchList.add(new RestaurantInfoBigCard(
         name: "Ne Yesek Burger",
-        rating: 7.2,
+        rating: 3.6,
         numOfRating: 231,
         deliveryTime: 20,
         price: 36.0,
@@ -37,7 +37,7 @@ class BodyState extends State<Body> {
         press: null));
     searchList.add(new RestaurantInfoBigCard(
         name: "Pizza Hut",
-        rating: 4.5,
+        rating: 2.5,
         numOfRating: 231,
         deliveryTime: 20,
         price: 22.0,
@@ -46,7 +46,7 @@ class BodyState extends State<Body> {
         press: null));
     searchList.add(new RestaurantInfoBigCard(
         name: "Burger King",
-        rating: 5.1,
+        rating: 2.6,
         numOfRating: 231,
         deliveryTime: 20,
         price: 27.5,
@@ -55,7 +55,7 @@ class BodyState extends State<Body> {
         press: null));
     searchList.add(new RestaurantInfoBigCard(
         name: "Ne Yesek Pizza",
-        rating: 9.4,
+        rating: 4.7,
         numOfRating: 231,
         deliveryTime: 20,
         price: 42.0,
@@ -64,7 +64,7 @@ class BodyState extends State<Body> {
         press: null));
     myList.add(new RestaurantInfoBigCard(
         name: "Ne Yesek Pizza",
-        rating: 9.4,
+        rating: 4.7,
         numOfRating: 231,
         deliveryTime: 20,
         image: null,
@@ -73,7 +73,7 @@ class BodyState extends State<Body> {
         press: null));
     myList.add(new RestaurantInfoBigCard(
         name: "Burger King",
-        rating: 5.1,
+        rating: 2.5,
         numOfRating: 231,
         deliveryTime: 20,
         image: null,
@@ -82,7 +82,7 @@ class BodyState extends State<Body> {
         press: null));
     myList.add(new RestaurantInfoBigCard(
         name: "Pizza Hut",
-        rating: 4.5,
+        rating: 2.3,
         numOfRating: 231,
         deliveryTime: 20,
         image: null,
@@ -91,7 +91,7 @@ class BodyState extends State<Body> {
         press: null));
     myList.add(new RestaurantInfoBigCard(
         name: "Ne Yesek Burger",
-        rating: 7.2,
+        rating: 3.6,
         numOfRating: 231,
         deliveryTime: 20,
         image: null,
@@ -135,7 +135,7 @@ class BodyState extends State<Body> {
       // Images are List<String>
       image: demoBigImages[2],
       name: "McDonald's",
-      rating: 8.6,
+      rating: 4.3,
       numOfRating: 200,
       price: 48.0,
       deliveryTime: 25,
@@ -170,7 +170,7 @@ class BodyState extends State<Body> {
                   padding: const EdgeInsets.only(bottom: kDefaultPadding),
                   child: RestaurantInfoBigCard(
                     // Images are List<String>
-                    image: demoBigImages[2],
+                    image: demoBigImages[index],
                     name: searchList[index].name,
                     rating: searchList[index].rating,
                     numOfRating: 200,

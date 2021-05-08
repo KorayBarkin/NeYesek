@@ -14,7 +14,7 @@ class PriceRange extends StatefulWidget {
 
 class _PriceRangeState extends State<PriceRange> {
   RangeValues _currentRangeValues = const RangeValues(20, 40);
-  RangeValues _currentRatingValues = const RangeValues(7.5, 9.0);
+  RangeValues _currentRatingValues = const RangeValues(2.5, 4.0);
 
   BodyState bs = new BodyState();
 
@@ -98,7 +98,7 @@ class _PriceRangeState extends State<PriceRange> {
             RangeSlider(
                 values: _currentRatingValues,
                 min: 0,
-                max: 10,
+                max: 5,
                 divisions: 100,
                 labels: RangeLabels(
                     _currentRatingValues.start.round().toString(),

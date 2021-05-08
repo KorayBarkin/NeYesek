@@ -59,13 +59,13 @@ final List<Tab> demoTabs = <Tab>[
     child: Text('Popüler'),
   ),
   Tab(
-    child: Text('Vegan Pizza'),
+    child: Text('Burgerler'),
   ),
   Tab(
-    child: Text('New York Pizza'),
+    child: Text('Pizzalar'),
   ),
   Tab(
-    child: Text('İtalyan  Pizza'),
+    child: Text('Makarnalar'),
   ),
   Tab(
     child: Text('Yan ürünler'),

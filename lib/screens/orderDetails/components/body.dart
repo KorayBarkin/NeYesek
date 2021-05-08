@@ -88,7 +88,7 @@ class _BodyState extends State<Body> {
                         );
                       }),
                   VerticalSpacing(of: 40),
-                  PrimaryButton(
+                  /*PrimaryButton(
                     text: "Geri Dön",
                     press: () {
                       Navigator.push(
@@ -98,7 +98,7 @@ class _BodyState extends State<Body> {
                         ),
                       );
                     },
-                  ),
+                  ),*/
                 ],
               ),
             ),

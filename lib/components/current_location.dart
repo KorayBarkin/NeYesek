@@ -15,7 +15,7 @@ String err;
 LocationData _CurrentPosition = null;
 
 class _CurrentLocationState extends State<CurrentLocation> {
-  String _useraddress = "Address not found";
+  String _useraddress = "Mevcut Konum";
 
   Future<void> _updateLocationName() async {
     //_getAddress(_currentPosition.latitude, _currentPosition.longitude);
